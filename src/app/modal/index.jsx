@@ -1,29 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Carousel } from "react-responsive-carousel";
-import { Mod } from "./app/compo/Mod";
-import { ImageDetail } from "./app/compo/Image-details";
+import { Mod } from "../compo/Mod";
+import { ImageDetail } from "../compo/Image-details";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const Modal = () => {
   let router = useRouter();
-
+  const closeModal = () => {
+    router.push("/");
+  };
   useEffect(() => {
     if (router.isReady) {
-      const closeModal = () => {
-        router.push("/");
-      };
     }
   }, [router.isReady]);
   return (
     <div>
       {router.isReady && (
-        <Mod
-          onClose={() => {
-            router.push("/");
-          }}
-        >
+        <Mod onClose={closeModal}>
           <ImageDetail image={router.query.image} />
         </Mod>
       )}
