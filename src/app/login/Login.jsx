@@ -11,8 +11,6 @@ import Link from "next/link";
 //import Dashboard from "../dashboard/Dashboard";
 import Image from "next/image";
 const Login = () => {
-  const [showComponent, setShowComponent] = useState(false);
-
   const {
     register,
     handleSubmit,
@@ -127,12 +125,12 @@ const Login = () => {
                 <div className="flex justify-between ">
                   <div className="flex text-white">
                     <input className="bg-gray-600 " type="checkbox" />
-                    <p className="pl-2  text-[10px] mt-1 md:mt-0 md:text-[12px] lg:mt-0 lg:text-[14px]">
+                    <p className="pl-2  text-[10px] mt-[3px] md:mt-0 md:text-[12px] lg:mt-0 lg:text-[14px]">
                       Remember me
                     </p>
                   </div>
                   <a href="#">
-                    <p className="text-blue-500 text-[10px] md:text-[12px] lg:text-[14px]">
+                    <p className="text-blue-500 text-[10px] md:text-[12px] lg:text-[14px] mt-1 md:mt-0 lg:mt-0">
                       Forgot Password?
                     </p>
                   </a>

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
     "autoprefixer": "10.4.15",
     "next": "13.4.19",
     "postcss": "8.4.28",
@@ -16,6 +17,9 @@
     "react-country-region-selector": "^3.6.1",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.45.4",
+    "react-icons": "^4.10.1",
+    "react-model": "^4.3.1",
+    "react-responsive-carousel": "^3.2.23",
     "sass": "^1.66.1",
     "tailwindcss": "3.3.3"
   }

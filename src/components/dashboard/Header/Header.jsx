@@ -29,8 +29,8 @@ const Header = () => {
               className="search-icon"
               src={search}
               alt=""
-              width={1.3}
-              height={1.3}
+              width={20}
+              height={21}
             />
           </button>
         </div>
@@ -51,7 +51,7 @@ const Header = () => {
             <Image src="/icon/audio.png" alt="" width={20} height={20} />
           </button>
           <button className="icons">
-            <Image src="/icon/mic.png" alt=""width={20} height={20} />
+            <Image src="/icon/mic.png" alt="" width={20} height={20} />
           </button>
         </div>
 
@@ -68,8 +68,8 @@ const Header = () => {
               className="search-icon"
               src={search}
               alt=""
-              width={1.3}
-              height={1.3}
+              width={20}
+              height={21}
             />
           </button>
         </div>

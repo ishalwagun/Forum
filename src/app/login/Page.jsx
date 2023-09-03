@@ -1,7 +1,9 @@
+"use client";
+
 import React from "react";
 import Login from "./Login";
 
-const Page = () => {
+const LoginPage = () => {
   return (
     <div>
       <Login />
@@ -9,4 +11,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default LoginPage;

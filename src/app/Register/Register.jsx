@@ -1,9 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { useForm, Controller } from "react-hook-form";
 
 import { CountryDropdown } from "react-country-region-selector";
 
+// import wallpaper from "/Assests/wallpaper.png";
 import wallpaper from "../Assests/wallpaper.png";
 import Image from "next/image";
 import google from "../Assests/google.png";
@@ -50,7 +51,10 @@ const Register = () => {
                 </p>
                 <p className="text-gray-400 text-[15px] ">
                   Start your website in seconds. Already have an account?{" "}
-                  <Link href="/login" className="text-blue-500 font-medium">
+                  <Link
+                    className="text-blue-500 font-medium"
+                    href="/login"
+                  >
                     Login here
                   </Link>
                 </p>

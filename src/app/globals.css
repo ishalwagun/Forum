@@ -21,7 +21,7 @@
   }
 
   .tabs {
-    @apply h-[24px] bg-[#2c353d] rounded-[24px] py-[4px] px-[10px] text-white text-[10px] mr-[10px] border-none hover:cursor-pointer;
+    @apply  bg-[#2c353d] rounded-[24px] py-[4px] px-[10px] text-white text-[10px] mr-[10px] border-none hover:cursor-pointer;
   }
 
   .contentImg {
@@ -34,5 +34,9 @@
 
   .Buttons {
     @apply flex py-[2px] px-[8px] justify-center items-center gap-[10px] rounded-[20px] bg-[#2c353d] border-none text-[#858ead] text-[9px] mr-[10px];
+  }
+
+  .tags{
+    @apply bg-[#2c353d] rounded-[6px] py-[4px] px-[12px] text-white text-[14px] mr-[10px] border-none hover:cursor-pointer
   }
 }

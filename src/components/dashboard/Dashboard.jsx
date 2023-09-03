@@ -1,20 +1,21 @@
-"use client";
 import React from "react";
-import Header from "../dashboard/Header/Header";
-import LeftSidebar from "../dashboard/Main/LeftSidebar/LeftSidebar";
-import MainBar from "../dashboard/Main/MainBar/MainBar";
-import Bar from "../dashboard/Main/RightSideBar/Bar";
+import Header from "./Header/Header";
+import LeftSidebar from "./Main/LeftSidebar/LeftSidebar";
+import MainBar from "./Main/MainBar/MainBar";
+import Page from "./Main/main/page";
+import Bar from "./Main/RightSideBar/Bar";
 import Image from "next/image";
 const Dashboard = () => {
   return (
     <>
       <div className="pt-[100px]">
         <Header />
-        <div className=" flex  ">
+        <div className=" flex m-[1.25] ">
           {<LeftSidebar />}
 
           <div className=" flex-col pr-[35px] lg:flex lg:flex-row ">
-            {<MainBar />}
+            {/* {<MainBar />} */}
+            {<Page />}
             {<Bar />}
           </div>
         </div>
