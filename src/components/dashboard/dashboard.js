@@ -1,10 +1,10 @@
 import React from "react";
+
+import Image from "next/image";
 import Header from "./Header/Header";
 import LeftSidebar from "./Main/LeftSidebar/LeftSidebar";
-import MainBar from "./Main/MainBar/MainBar";
-import Page from "./Main/main/page";
 import Bar from "./Main/RightSideBar/Bar";
-import Image from "next/image";
+import ContentPage from "./Main/main";
 const Dashboard = () => {
   return (
     <>
@@ -14,10 +14,9 @@ const Dashboard = () => {
           {<LeftSidebar />}
 
           <div className=" flex-col pr-[35px] lg:flex lg:flex-row ">
-            {/* {<MainBar />} */}
-            {<Page />}
-            {<Bar />}
+            {<ContentPage />}
           </div>
+          {<Bar />}
         </div>
 
         <div className=" fixed bottom-0 lg:hidden bg-[#262D34] w-[100%]  px-[1.69rem] py-[0.88rem] flex items-center justify-between  ">

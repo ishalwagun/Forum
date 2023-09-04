@@ -1,24 +1,25 @@
-import { ImageDetail } from "@/app/compo/Image-details";
+import { ImageDetail } from "@/components/Image-details";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 
 export default function ImagePage() {
   let router = useRouter();
-  let image = router.query.image;
-
+  console.log(router.query.image);
   return (
     <div className="relative w-screen h-screen bg-gray-800">
-      <Link href="/">
-        <a className="relative z-20 flex items-center w-1/2 pt-12 mx-auto text-xl text-white/80 hover:text-white">
-          <BackIcon className="w-5 h-5 mr-2" />
-          Back
-        </a>
+      <Link
+        href="/"
+        className="relative z-20 flex items-center w-1/2 pt-12 mx-auto text-xl text-white/80 hover:text-white"
+      >
+        <BackIcon className="w-5 h-5 mr-2" />
+        Back
       </Link>
 
       <div className="absolute inset-0">
         <div className="flex items-center justify-center h-screen">
           <div className="w-1/2">
-            <ImageDetail image={image} />
+            <ImageDetail image={router.query.image} />
           </div>
         </div>
       </div>

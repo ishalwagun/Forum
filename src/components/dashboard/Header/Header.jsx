@@ -22,7 +22,7 @@ const Header = () => {
           </div>
 
           <h3 className=" hidden text-[14px] md:block md:text-[#ff571a] lg:text-4xl">
-            VanGuard
+            Forum
           </h3>
           <button className="md:hidden ml-[20px]">
             <Image

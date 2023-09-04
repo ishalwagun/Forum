@@ -5,8 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { MdOutlineWatchLater } from "react-icons/md";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
-import Modal from "@/app/modal/index";
+import Modal from "../../modal";
+
 const ContentPage = () => {
   return (
     <div className="w-[100%] p-[25px] pr-0  lg:p-[25px] rounded-[16px] ">
@@ -73,36 +73,6 @@ const ContentPage = () => {
             veniam optio voluptate animi, ipsum cupiditate tempore!
           </p>
 
-          {/* <div>
-            <Carousel className="mt-10">
-              <Link
-                href="/icon/1.jpg"
-                className="block text-center no-underline image-link"
-              >
-                <div className="w-[100%] h-40 overflow-hidden flex justify-center items-center image-container">
-                  <Image
-                    src="/icon/1.jpg"
-                    alt=""
-                    layout="fill"
-                    className=" w-[100%]  object-cover carousel-image"
-                  />
-                </div>
-              </Link>
-              <Link
-                href="/icon/1.jpg"
-                className="block text-center no-underline image-link"
-              >
-                <div className="w-[100%] h-40 overflow-hidden flex justify-center items-center image-container">
-                  <Image
-                    src="/icon/1.jpg"
-                    alt=""
-                    layout="fill"
-                    className=" w-[100%]  object-cover carousel-image"
-                  />
-                </div>
-              </Link>
-            </Carousel>
-          </div> */}
           <Modal />
         </div>
 
