@@ -2,9 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Carousel } from "react-responsive-carousel";
 import { useSearchParams, useRouter } from "next/navigation";
-import { ImageDetail } from "@/components/Image-details";
-import { Mod } from "@/components/Mod";
-
+import { Mod } from "@/components/mod";
+import { ImageDetail } from "@/components/image-details";
 const Modal = () => {
   let param = useSearchParams();
   let router = useRouter();
