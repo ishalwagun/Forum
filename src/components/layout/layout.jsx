@@ -1,22 +1,27 @@
-import React from "react";
-
-import Image from "next/image";
 import Header from "./Header/Header";
-import LeftSidebar from "./Main/LeftSidebar/LeftSidebar";
-import Bar from "./Main/RightSideBar/Bar";
-import ContentPage from "./Main/main";
-const Dashboard = () => {
+import LeftSidebar from "./LeftSidebar/LeftSidebar";
+import MainBar from "./MainBar";
+import Bar from "./RightSideBar/Bar";
+import Image from "next/image";
+
+export default function DashboardLayout({
+  children, // will be a page or nested layout
+}) {
   return (
     <>
-      <div className="pt-[100px]">
+      <div className="pt-[100px]  ">
         <Header />
-        <div className=" flex m-[1.25] ">
+        <div className=" flex mr-[25px] ">
           {<LeftSidebar />}
 
-          <div className=" flex-col pr-[35px] lg:flex lg:flex-row ">
-            {<ContentPage />}
+          <div className=" flex-col lg:flex lg:flex-row ">
+          <div className="flex flex-col  ">
+            {<MainBar />}
+            {children}
           </div>
+
           {<Bar />}
+          </div>
         </div>
 
         <div className=" fixed bottom-0 lg:hidden bg-[#262D34] w-[100%]  px-[1.69rem] py-[0.88rem] flex items-center justify-between  ">
@@ -71,6 +76,4 @@ const Dashboard = () => {
       </div>
     </>
   );
-};
-
-export default Dashboard;
+}

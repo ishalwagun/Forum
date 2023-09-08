@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { MdOutlineWatchLater } from "react-icons/md";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Modal from "../../modal";
+import Modal from "@/components/modal";
 
 const ContentPage = () => {
   return (

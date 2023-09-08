@@ -34,7 +34,7 @@ const Modal = () => {
           </div>
         </Link>
         <Link
-          href="/?image=1"
+          href="/content/${}?image=1"
           as="/1"
           className="block text-center no-underline "
         >
