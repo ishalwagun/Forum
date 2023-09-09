@@ -6,16 +6,35 @@ import { Controller } from "react-hook-form";
 import { CountryDropdown } from "react-country-region-selector";
 import { useRouter } from "next/router";
 import { useFirebase } from "@/context/firebase";
+import Button from "../loadingButton/button";
 
 const RegisterForm = () => {
-  const { user, googleSignIn } = useFirebase();
+  const { user, googleSignIn, facebookSignIn } = useFirebase();
   const router = useRouter();
+  const firebase = useFirebase();
+  const [loading, setLoading] = useState(false);
 
-  const handleSignIn = async () => {
+  useEffect(() => {
+    if (firebase.isLoggedIn) {
+      router.push("/login");
+    }
+  }, [firebase, router]);
+
+  const googleHandleSignIn = async () => {
     try {
       await googleSignIn();
 
-      router.push(user ? "/login" : "");
+      router.push(user ? "/login" : "/Register");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const facebookHandleSignIn = async () => {
+    try {
+      await facebookSignIn();
+
+      router.push(user ? "/login" : "/Register");
     } catch (error) {
       console.log(error);
     }
@@ -107,6 +126,7 @@ const RegisterForm = () => {
                 name={name}
                 value={value}
                 onChange={onChange}
+                rules={{ required: "Country is required" }}
                 classes="input h-[56.5px] mb-6 "
               />
             )}
@@ -212,21 +232,24 @@ const RegisterForm = () => {
           />
           <button
             className="pl-2 text-[14px] text-white font-[500]"
-            onClick={handleSignIn}
+            onClick={googleHandleSignIn}
           >
-            Sign up with Google
+            Sign in with Google
           </button>
         </div>
         <div className="loginBtns">
           <Image
-            className="w-6 h-5 mt-[4px] "
-            src="/Assests/logos/github.png"
+            className="w-6 h-6  "
+            src="/Assests/logos/facebook.png"
             alt=""
             width={24}
-            height={20}
+            height={24}
           />
-          <button className="pl-2 text-[14px] text-white font-[500]">
-            Sign up with Github
+          <button
+            className="pl-2 text-[14px] text-white font-[500]"
+            onClick={facebookHandleSignIn}
+          >
+            Sign in with Facebook
           </button>
         </div>
       </div>
@@ -252,9 +275,17 @@ const RegisterForm = () => {
         </div>
       </div>
 
-      <button className="w-full items-center justify-center mt-8 px-5 py-3.5 bg-blue-600 rounded-lg text-white text-[14px] font-[500] hover:bg-blue-500">
-        Create Account
-      </button>
+      <Button
+        title={"Create account"}
+        loading={loading}
+        onClick={() => {
+          setLoading(true);
+
+          setTimeout(() => {
+            setLoading(false);
+          }, 2000);
+        }}
+      />
     </form>
   );
 };

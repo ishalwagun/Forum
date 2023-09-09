@@ -11,16 +11,16 @@ export default function DashboardLayout({
     <>
       <div className="pt-[100px]  ">
         <Header />
-        <div className=" flex mr-[25px] ">
+        <div className=" flex mr-[30px] ml-[5px] lg:ml-0  ">
           {<LeftSidebar />}
 
           <div className=" flex-col lg:flex lg:flex-row ">
-          <div className="flex flex-col  ">
-            {<MainBar />}
-            {children}
-          </div>
+            <div className="flex flex-col  ">
+              {<MainBar />}
+              {children}
+            </div>
 
-          {<Bar />}
+            {<Bar />}
           </div>
         </div>
 

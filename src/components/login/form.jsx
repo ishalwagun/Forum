@@ -5,15 +5,33 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useFirebase } from "@/context/firebase";
 import { useRouter } from "next/router";
-import { firebaseAuth } from "@/context/firebase";
+import Button from "../loadingButton/button";
 
 const LoginForm = () => {
-  const { user, googleSignIn } = useFirebase();
+  const { user, googleSignIn, facebookSignIn } = useFirebase();
   const router = useRouter();
+  const firebase = useFirebase();
+  const [loading, setLoading] = useState(false);
 
-  const handleSignIn = async () => {
+  useEffect(() => {
+    if (firebase.isLoggedIn) {
+      router.push("/");
+    }
+  }, [firebase, router]);
+
+  const googleHandleSignIn = async () => {
     try {
       await googleSignIn();
+
+      router.push(!user ? "/Register" : "/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const facebookHandleSignIn = async () => {
+    try {
+      await facebookSignIn();
 
       router.push(!user ? "/Register" : "/");
     } catch (error) {
@@ -50,7 +68,7 @@ const LoginForm = () => {
       <div className="lg:flex">
         <div className="lg:mr-5 lg:w-full">
           <label className="label">Email</label>
-
+          {user && <p>email is already registered.</p>}
           <input
             className=" input"
             type="text"
@@ -118,21 +136,24 @@ const LoginForm = () => {
           />
           <button
             className="pl-2 text-[14px] text-white font-[500]"
-            onClick={handleSignIn}
+            onClick={googleHandleSignIn}
           >
             Sign up with Google
           </button>
         </div>
         <div className="loginBtns">
           <Image
-            className="w-6 h-5 mt-[4px] "
-            src="/Assests/logos/github.png"
+            className="w-6  h-6  mb-[1px]  "
+            src="/Assests/logos/facebook.png"
             alt=""
             width={24}
-            height={20}
+            height={24}
           />
-          <button className="pl-2 text-[14px] text-white font-[500]">
-            Sign up with Github
+          <button
+            className="pl-2 text-[14px] text-white font-[500]"
+            onClick={facebookHandleSignIn}
+          >
+            Sign up with Facebook
           </button>
         </div>
       </div>
@@ -150,9 +171,17 @@ const LoginForm = () => {
         </a>
       </div>
 
-      <button className="w-full items-center justify-center mt-8 px-5 py-3.5 bg-blue-600 rounded-lg text-white text-[14px] font-[500] hover:bg-blue-500">
-        Sign in
-      </button>
+      <Button
+        title={"Sign in"}
+        loading={loading}
+        onClick={() => {
+          setLoading(true);
+          // fake api call
+          setTimeout(() => {
+            setLoading(false);
+          }, 2000);
+        }}
+      />
     </form>
   );
 };

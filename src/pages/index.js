@@ -10,8 +10,8 @@ export default function Home() {
   const user = useFirebase();
   return (
     <DashboardLayout>
-      <Content></Content>
-      {/* <ContentPage></ContentPage> */}
+      {/* <Content></Content> */}
+      <ContentPage></ContentPage>
     </DashboardLayout>
   );
 }
