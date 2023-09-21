@@ -1,6 +1,7 @@
 import Head from "next/head";
 import "@/styles/globals.css";
 import "@/styles/index.css";
+import { FirebaseProvider } from "../context/firebase";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -9,8 +10,8 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Fatan Forum</title>
       </Head>
+
       <Component {...pageProps} />
     </>
-    // </Provider>
   );
 }
