@@ -15,7 +15,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (firebase.isLoggedIn) {
-      router.push("/");
+      router.push("/dashboard");
     }
   }, [firebase, router]);
 
@@ -23,7 +23,7 @@ const LoginForm = () => {
     try {
       await googleSignIn();
 
-      router.push(!user ? "/Register" : "/");
+      router.push(!user ? "/Register" : "/dashboard");
     } catch (error) {
       console.log(error);
     }

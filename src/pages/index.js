@@ -8,9 +8,10 @@ import Link from "next/link";
 export default function Home() {
   const user = useFirebase();
   return (
-    <DashboardLayout>
-      <Content></Content>
-      {/* <ContentPage></ContentPage> */}
-    </DashboardLayout>
+    // <DashboardLayout>
+    //   <Content></Content>
+    //   {/* <ContentPage></ContentPage> */}
+    // </DashboardLayout>
+    <div></div>
   );
 }

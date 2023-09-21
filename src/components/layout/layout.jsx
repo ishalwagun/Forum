@@ -1,4 +1,4 @@
-
+import Content from "../dashboard/content";
 import Header from "./Header/Header";
 import LeftSidebar from "./LeftSidebar/LeftSidebar";
 import MainBar from "./MainBar";
@@ -20,7 +20,7 @@ export default function DashboardLayout({
               {<MainBar />}
 
               {children}
-          
+            
             </div>
 
             {<Bar />}
