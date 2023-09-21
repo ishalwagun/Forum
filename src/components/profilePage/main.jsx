@@ -1,5 +1,5 @@
-import ContentPage from "@/pages/dashboard/content";
 import React from "react";
+import ContentPage from "../dashboard/contentpage";
 
 function Main() {
   return (

@@ -34,7 +34,7 @@ function DropDown() {
           </div>
           <hr className="border-0 h-[1px] bg-gray-700 my-[10px]" />
           <div className="p-2 hover:bg-[#384046]  hover:cursor-pointer py-3 px-3 rounded-lg">
-            <Link href="#">View Your Profile</Link>
+            <Link href="/profile">View Your Profile</Link>
           </div>
         </div>
         <div className="flex mt-4 items-center py-3 px-1  hover:bg-[#384046]  hover:cursor-pointer rounded-lg">
@@ -66,7 +66,7 @@ function DropDown() {
               height={16}
             />
           </div>
-          <button onClick={handleSignOut} >
+          <button onClick={handleSignOut}>
             <p>Logout</p>
           </button>
 
