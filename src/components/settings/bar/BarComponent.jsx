@@ -12,7 +12,7 @@ function BarComponent() {
           <div className="relative">
             <Image
               className=" rounded-[50%] w-[100px] h-[100px]  object-cover "
-              src="/icon/image.jpg"
+              src="/1.jpg"
               width={100}
               height={100}
               alt="profile"
@@ -44,7 +44,7 @@ function BarComponent() {
             width={16}
             height={16}
           ></Image>
-          <Link className="text-[15px] font-medium" href="/settings/general">
+          <Link className="text-[15px] font-medium" href="/settings/">
             General
           </Link>
         </div>

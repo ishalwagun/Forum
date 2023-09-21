@@ -47,7 +47,7 @@ function DropDown() {
               height={20}
             />
           </div>
-          <p>Settings</p>
+          <Link href="/settings">Settings</Link>
           <Image
             className=" ml-auto "
             src={next}

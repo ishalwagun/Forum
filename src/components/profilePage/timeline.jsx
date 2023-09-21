@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import coverPhoto from "/public/1.jpg";
 import camera from "/public/icon/camera.png";
-import profile from "/public/icon/image.jpg";
+
 import plus from "/public/icon/plus.png";
 
 function Timeline() {
@@ -65,7 +65,7 @@ function Timeline() {
           ) : (
             <Image
               className="  rounded-[50%] w-[110px] h-[110px] object-cover absolute"
-              src={profile}
+              src={coverPhoto}
               alt=""
               width={110}
               height={110}

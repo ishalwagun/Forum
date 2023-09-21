@@ -25,7 +25,7 @@ const MainBar = () => {
 
   return (
     <>
-      <div className=" w-[100%]  ">
+      <div className=" w-[100%] basis-[75%] ">
         <div className="lg:hidden flex  bg-[#262d34] items-center   rounded-[0.625rem] p-[0.62rem] justify-between mb-[1.25rem] ml-[25px] lg:ml-0 mr-[25px] md:mr-0">
           <div className="flex gap-[0.38rem] items-center p-[0.38rem] py-[0.31rem]  hover:bg-[#2C353D] hover:rounded-[0.375rem]">
             <div className="bg-[#2C353D] p-[0.25rem] rounded-[0.375rem] ">

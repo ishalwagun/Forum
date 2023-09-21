@@ -16,11 +16,10 @@ export default function DashboardLayout({
           {<LeftSidebar />}
 
           <div className=" flex-col lg:flex lg:flex-row   ">
-            <div className="flex flex-col  ">
+            <div className="flex flex-col basis-[70%] ">
               {<MainBar />}
 
               {children}
-            
             </div>
 
             {<Bar />}
