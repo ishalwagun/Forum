@@ -7,7 +7,7 @@ import Top from "./sections/topSection/Top";
 const LeftSidebar = () => {
   return (
     <>
-      <div className="  hidden  lg:block lg:flex-col md:px-[25px]  lg:flex lg:gap-[1.25rem] lg:flex-shrink-0 hover:overflow-auto  ">
+      <div className="  hidden lg:block lg:flex-col md:px-[25px] lg:gap-[1.25rem] lg:flex-shrink-0  ">
         <div className="sticky top-[100px] lg:flex-col lg:flex lg:gap-[1.25rem]  ">
           <div className="  flex-col p-[0.62rem] bg-[#262D34] rounded-2xl flex-shrink-0 flex gap-[7px] ">
             <Top

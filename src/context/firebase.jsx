@@ -6,17 +6,17 @@ import {
   signInWithPopup,
   FacebookAuthProvider,
   onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDTv4ZQ9EOQw1UXrh6U9eMe0B8IE0QQ144",
-  authDomain: "fatan-forum.firebaseapp.com",
-  databaseURL: "https://fatan-forum-default-rtdb.firebaseio.com",
-  projectId: "fatan-forum",
-  storageBucket: "fatan-forum.appspot.com",
-  messagingSenderId: "864055758095",
-  appId: "1:864055758095:web:db50574d4fc0a7c16f027a",
-  measurementId: "G-SCT5K8HT84",
+  apiKey: "AIzaSyAFZ1Tgecu8gs6MG_zTfn75yLHXmZEhYLg",
+  authDomain: "vividia-e507f.firebaseapp.com",
+  projectId: "vividia-e507f",
+  storageBucket: "vividia-e507f.appspot.com",
+  messagingSenderId: "842891183459",
+  appId: "1:842891183459:web:edd6bc4549e515c62dbf56",
+  measurementId: "G-7NEJF5Y2YE",
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
@@ -101,11 +101,17 @@ export const FirebaseProvider = (props) => {
         // ...
       });
 
+  //signout
+
+  const logOut = () => {
+    signOut(firebaseAuth);
+  };
+
   const isLoggedIn = user ? true : false;
 
   return (
     <FirebaseContext.Provider
-      value={{ googleSignIn, facebookSignIn, isLoggedIn }}
+      value={{ googleSignIn, facebookSignIn, isLoggedIn, logOut }}
     >
       {props.children}
     </FirebaseContext.Provider>

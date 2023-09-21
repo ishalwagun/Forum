@@ -10,7 +10,7 @@ import Modal from "@/components/modal";
 const ContentPage = () => {
   return (
     <div className="w-[100%] p-[25px] pr-0  lg:p-[25px] rounded-[16px] ">
-      <h1 className="text-white text-[25px] mb-[7px]">
+      <h1 className="text-white text-[25px] mb-[7px]mr-[25px] md:mr-0">
         Which movie have you watched most recently?
       </h1>
 
@@ -22,7 +22,7 @@ const ContentPage = () => {
           </Link>
         </div>
 
-        <div className="flex gap-[6px]">
+        <div className="flex gap-[6px] mr-[24px] md:mr-0">
           <Link href="#" className="tags">
             Gaming
           </Link>
@@ -35,7 +35,7 @@ const ContentPage = () => {
         </div>
       </div>
 
-      <div className="bg-[#262d34] p-[20px] lg:p-[30px] mt-6 rounded-[16px]   gap-4 ">
+      <div className="bg-[#262d34] p-[20px] lg:p-[30px] mt-6 rounded-[16px] gap-4  mr-[24px] md:mr-0">
         <div className="flex items-center gap-4 ">
           <Image
             src="https://www.azyrusthemes.com/forum2/fonts/icons/avatars/B.svg"
