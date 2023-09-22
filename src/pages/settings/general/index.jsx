@@ -32,13 +32,13 @@ export default function General() {
             </div>
           </form>
         </div>
-        {/* <div>
+        <div>
           <Image
             className="object-contain w-full h-[300px]"
             src={wallpaper}
             alt=""
           ></Image>
-        </div> */}
+        </div>
       </div>
     </div>
   );

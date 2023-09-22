@@ -85,13 +85,7 @@ export default function Modal({ show, onClose, children }) {
               <p className="text-[#E4E6EB] font-semibold text-[18px]">
                 Isha Lwagun
               </p>
-              {/* <div className=" mt-[2px] flex bg-[#FFFFFF1A] py-[4px] px-[8px] gap-[4px] rounded-md">
-                <Image src={category} alt="" width={15} height={12}></Image>
-                <button className=" text-[#E4E6EB] font-semibold text-[13px]">
-                  Categories
-                </button>
-                <Image src={dropdown} alt="" width={18} height={18}></Image>
-              </div> */}
+            
 
               <div className="  ">
                 <select
