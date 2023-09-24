@@ -11,7 +11,7 @@ export default function SettingsLayout({ children }) {
 
       <BarComponent />
 
-      <div className=" m-7 lg:ml-[330px] lg:mr-[60px] lg:pt-[85px]">
+      <div className=" m-7 lg:ml-[330px] lg:mr-[60px]  pt-[80px] lg:pt-[85px]">
         {children}
       </div>
 

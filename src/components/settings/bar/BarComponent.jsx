@@ -31,7 +31,7 @@ function BarComponent() {
         </div>
       </div>
 
-      <div className="w-full h-[2px] bg-gray-700"></div>
+      <div className="w-full h-[2px] my-2 bg-gray-700"></div>
 
       <div className="  py-[20px] flex-col  flex items-center gap-5 ">
         <div
@@ -72,8 +72,39 @@ function BarComponent() {
             width={16}
             height={16}
           ></Image>
-          <Link className="text-[15px] font-medium" href="/settings/">
+          <Link className="text-[15px] font-medium" href="/settings/account">
             Account
+          </Link>
+        </div>
+
+        <div className="w-full h-[2px] bg-gray-700 my-2"></div>
+
+        <div
+          className="flex pt-[14px]  w-full items-center justify-center px-8  mr-12 gap-6
+         "
+        >
+          <Image
+            src="/icon/settings.png"
+            alt="settings"
+            width={16}
+            height={16}
+          ></Image>
+          <Link className="text-[15px] font-medium" href="/settings/privacy">
+            Privacy
+          </Link>
+        </div>
+        <div
+          className="flex pt-[14px]  w-full items-center justify-center px-8  mr-[68px] gap-6
+         "
+        >
+          <Image
+            src="/icon/settings.png"
+            alt="settings"
+            width={16}
+            height={16}
+          ></Image>
+          <Link className="text-[15px] font-medium" href="/settings/help">
+            Help
           </Link>
         </div>
       </div>
