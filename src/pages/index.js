@@ -5,7 +5,6 @@ import Content from "@/components/dashboard/content";
 import ContentPage from "./dashboard/content";
 import { useFirebase } from "../context/firebase";
 import Link from "next/link";
-
 export default function Home() {
   const user = useFirebase();
   return (

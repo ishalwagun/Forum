@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Button({ title, loading, onClick }) {
+export default function button({ title, loading, onClick }) {
   return (
     <button
       disabled=""

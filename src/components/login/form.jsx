@@ -66,7 +66,7 @@ const LoginForm = () => {
         </p>
       </div>
       <div className="lg:flex">
-        <div div className="lg:mr-5 lg:w-full">
+        <div className="lg:mr-5 lg:w-full">
           <label className="label">Email</label>
           {user && <p>email is already registered.</p>}
           <input
