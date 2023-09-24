@@ -54,7 +54,7 @@ export default function SecurityComponent() {
           </p>
         </div>
         <div className=" lg:flex items-center">
-          <div className=" basis-[80%] flex items-center">
+          <div className=" basis-[80%] flex items-center mb-6 lg:mb-0">
           <div className="mr-7">
           <Switch />
           </div>

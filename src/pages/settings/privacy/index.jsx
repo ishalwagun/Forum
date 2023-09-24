@@ -9,14 +9,12 @@ export default function Privacy() {
     <SettingsLayout>
       <>
         <div className="  text-white   z-50 basis-[75%] bg-[#2d333b]  py-7 px-6 rounded-lg justify-center items-center">
-          <div className="text-[20px] pl-4  font-normal ">
-            Privacy Settings
-          </div>
+          <div className="text-[20px] pl-4  font-normal ">Privacy Settings</div>
 
           <div className=" lg:flex lg:flex-row justify-between">
             <div className="basis-[80%]">
               <PrivacyComponent />
-              <PrivacyComponent/>
+              <PrivacyComponent />
             </div>
             <div className="">
               <Image
