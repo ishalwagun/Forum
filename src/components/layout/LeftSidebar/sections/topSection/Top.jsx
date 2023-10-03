@@ -3,14 +3,14 @@ import React from "react";
 
 const Top = (props) => {
   return (
-    <div className="flex gap-[0.38rem] py-[0.38rem] px-[0.31rem] hover:bg-[#2C353D]  hover:cursor-pointer rounded-[0.375rem]">
-      <div className="bg-[#2C353D] rounded-md p-[0.25rem] flex items-center">
+    <div className="flex gap-[0.38rem] py-2 px-3 hover:bg-[#2C353D]  hover:cursor-pointer rounded-[0.375rem] w-[100%]">
+      <div className="bg-[#2C353D] rounded-md px-2 py-0 flex items-center   justify-center object-contain">
         <Image
-          className="w-[1.25rem] h-[1.25rem] "
+          className="flex object-cover items-center justify-center"
           src={props.image}
           alt=""
-          width={1.25}
-          height={1.25}
+          width={25}
+          height={25}
         />
       </div>
 

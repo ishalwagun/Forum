@@ -4,7 +4,8 @@ import Contents from "./contents/Contents";
 function Content() {
   return (
     <>
-      {
+     <div className="w-[100%]">
+     {
         <Contents
           title=" Blockchain developer best practices on innovationchain"
           tab1="finance"
@@ -68,6 +69,7 @@ function Content() {
           due="3 weeks ago"
         />
       }
+     </div>
     </>
   );
 }

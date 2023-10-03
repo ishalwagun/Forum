@@ -1,11 +1,11 @@
-import ContentPage from "@/components/dashboard/contentpage";
+import Content from "@/components/dashboard/content";
 import DashboardLayout from "@/components/layout/layout";
 import React from "react";
 
-export default function Content() {
+export default function Group() {
   return (
     <DashboardLayout>
-      <ContentPage />
+      <Content />
     </DashboardLayout>
   );
 }

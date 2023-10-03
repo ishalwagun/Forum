@@ -3,17 +3,19 @@ import React from "react";
 import Middle from "./sections/middleSection/Middle";
 import Bottom from "./sections/bottomSection/Bottom";
 import Top from "./sections/topSection/Top";
+import DashboardLayout from "../layout";
+import Link from "next/link";
 
 const LeftSidebar = () => {
   return (
     <>
-      <div className="  hidden lg:block lg:flex-col md:px-[25px] lg:gap-[1.25rem] lg:flex-shrink-0  ">
+      <div className="   hidden lg:block lg:flex-col md:px-[25px] lg:gap-[1.25rem]  w-[100%] ">
         <div className="sticky top-[100px] lg:flex-col lg:flex lg:gap-[1.25rem]  ">
           <div className="  flex-col p-[0.62rem] bg-[#262D34] rounded-2xl flex-shrink-0 flex gap-[7px] ">
             <Top
               image="/icon/new.png"
               title="Newest and Recent"
-              desc="Find the latest update"
+              desc="Find the latest update lorem25  Find the latest update  "
             />
 
             {
@@ -85,11 +87,13 @@ const LeftSidebar = () => {
             </div>
           </div>
           <div className="flex-col bg-[#262D34] rounded-2xl flex-shrink-0 py-[1.25rem] pl-[1.25rem] pr-[1.56rem]">
-            <div className="mb-[1.25rem]">
-              <p className="text-[1rem] leading-[1.5rem] font-semibold text-white">
-                Pinned Group &rarr;
-              </p>
-            </div>
+            <Link href={"/dashboard/group"}>
+              <div className="mb-[1.25rem] cursor-pointer">
+                <p className="text-[1rem] leading-[1.5rem] font-semibold text-white">
+                  Pinned Group &rarr;
+                </p>
+              </div>
+            </Link>
 
             <div className="flex-col flex gap-[0.62rem] ">
               {

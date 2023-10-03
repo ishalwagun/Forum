@@ -7,26 +7,45 @@ import Image from "next/image";
 import photo from "/public/icon/photoupload.png";
 import ModalPost from "@/components/modalpost";
 
-const MainBar = () => {
+const MainBar = ({ onClose }) => {
   const [showModal, setShowModal] = useState(false);
   const [image, setImage] = useState("");
+  const [showImage, setShowImage] = useState(true);
 
   const inputRef = useRef(null);
 
+  const handleImageChange = (e) => {
+    const files = e.target.files;
+    const urls = [];
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const url = URL.createObjectURL(file);
+      urls.push(url);
+    }
+
+    setImage(urls);
+  };
+
+  const handleRemoveImage = (index) => {
+    const updatedImages = [...image];
+    updatedImages.splice(index, 1);
+    setImage(updatedImages);
+  };
   const handleImageClick = () => {
     inputRef.current.click();
   };
 
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    console.log(file);
-    setImage(event.target.files[0]);
-  };
+  // const handleImageChange = (event) => {
+  //   const file = event.target.files[0];
+  //   console.log(file);
+  //   setImage(event.target.files[0]);
+  // };
 
   return (
     <>
-      <div className=" w-[100%] basis-[75%] ">
-        <div className="lg:hidden flex  bg-[#262d34] items-center   rounded-[0.625rem] p-[0.62rem] justify-between mb-[1.25rem] ml-[25px] lg:ml-0 mr-[25px] md:mr-0">
+      <div className=" w-[100%]  ">
+        <div className="lg:hidden flex  bg-[#262d34] items-center   rounded-[0.625rem] p-[0.62rem] justify-between mb-[1.25rem] mx-[25px] lg:mx-0">
           <div className="flex gap-[0.38rem] items-center p-[0.38rem] py-[0.31rem]  hover:bg-[#2C353D] hover:rounded-[0.375rem]">
             <div className="bg-[#2C353D] p-[0.25rem] rounded-[0.375rem] ">
               <Image src={icon} alt="" />
@@ -54,7 +73,7 @@ const MainBar = () => {
             </div>
           </div>
         </div>
-        <div className=" bg-[#262d34] items-center  flex gap-[20px] rounded-[16px] justify-between  mb-[20px] p-[1.25rem] ml-[25px] lg:ml-0 mr-[25px] md:mr-0">
+        <div className=" bg-[#262d34] items-center  flex gap-[20px] rounded-[16px] justify-between  mb-[20px] p-[1.25rem] mx-[25px] md:mx-0lg:mx-[20px]">
           <div className="contentImg">
             <Image
               className=" w-[2.45194rem]
@@ -82,15 +101,31 @@ h- [2.38594rem]"
             "
                 placeholder="What's on your mind, Isha?"
               />
-              {image ? (
-                <Image
-                  className=" mt-[16px] h-40 w-full object-contain items-center "
-                  src={URL.createObjectURL(image)}
-                  width={700}
-                  height={30}
-                  alt=""
-                ></Image>
-              ) : null}
+              {image.length > 0 && (
+                <div className="flex flex-wrap mt-2 ">
+                  {image.map((imageUrl, index) => (
+                    <div
+                      key={index}
+                      className="relative p-2 mr-2 "
+                      style={{ flexBasis: "30%", boxSizing: "border-box" }}
+                    >
+                      <Image
+                        className="h-40 w-full object-contain items-center"
+                        src={imageUrl}
+                        width={700}
+                        height={30}
+                        alt=""
+                      />
+                      <div
+                        className="absolute top-0 right-0 w-[35px] h-[35px] rounded-[25px] bg-[#39434d] flex items-center justify-center ml-auto"
+                        onClick={() => handleRemoveImage(index)}
+                      >
+                        <button className="text-[28px] p-[8px] flex">X</button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
             <div className="flex items-center justify-between border border-gray-700  p-[10px]">
               <p className="text-[15px] font-semibold text-[#E4E6EB]">
@@ -110,13 +145,9 @@ h- [2.38594rem]"
             </div>
           </ModalPost>
 
-          {/* <div className="btn">
-            <button className=" bg-[#ff6934] text-white border-none text-[13px] font-medium p-[10px] ml-[16px] flex-shrink-0 hover:cursor-pointer rounded-[6px] w-[100px]">
-              Create Post
-            </button>
-          </div> */}
+      
         </div>
-        {/* content */}
+      
       </div>
     </>
   );
