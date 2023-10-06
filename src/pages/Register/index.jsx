@@ -42,8 +42,7 @@ const Register = () => {
             <div className="w-[100%] h-[1px] bg-gray-700 "></div>
             <div className="flex justify-between items-center text-[9px] md:text-[14px]  p-4 mx-1 lg:mx-6">
               <p className="text-gray-400 font-normal ">
-                {" "}
-                &#xA9;Copyright fatan
+                &#xA9;Copyright Fatan
               </p>
               <p className="text-gray-400   font-normal ">
                 Developed by Vividia Infosys

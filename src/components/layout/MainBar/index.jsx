@@ -144,10 +144,7 @@ h- [2.38594rem]"
               </div>
             </div>
           </ModalPost>
-
-      
         </div>
-      
       </div>
     </>
   );

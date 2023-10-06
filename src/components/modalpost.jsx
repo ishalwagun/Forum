@@ -30,10 +30,10 @@ export default function Modal({ show, onClose, children }) {
   const modalContent = show ? (
     <div className={styles.overlay} id="wrapper" onClick={handleClose}>
       <div className="z-100 bg-[#2d3238] rounded-lg  mx-[30px] lg:mx-0 min-[800px]:w-[600px] min-[1000px]:w-[700px] min-[500px]:w-[500px]  border border-gray-700 ">
-        <div className="  mt-5  mr-2 w-[35px] h-[35px] rounded-[25px] bg-[#39434d] flex items-center justify-center ml-auto">
+        <div className="  mt-5  mr-2 w-[35px] h-[35px] rounded-[25px] bg-[#39434d] flex items-center justify-center ml-auto hover:opacity-75">
           <a className="" href="#">
             <button
-              className="text-[28px] p-[8px] flex "
+              className="text-[20px]  flex text-white p-3 "
               onClick={() => onClose()}
             >
               X
