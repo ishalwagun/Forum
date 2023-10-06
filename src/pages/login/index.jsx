@@ -47,15 +47,15 @@ const Login = () => {
             </div>
           </div>
 
-          <div className=" w-full p-4  md:flex md:items-center md:justify-between  md:p-6 mt-20 ">
+          <div className=" w-full  md:flex md:items-center md:justify-between  mt-20 ">
             <div className="w-[100%] h-[1px] bg-gray-700 ">
-              <div className="flex justify-between  mx-1 lg:mx-6">
-                <p className="text-gray-400 font-normal pt-2 text-[9px] md:text-[14px]  md:px-4 md:pt-5 lg:text-[14px]  lg:pl-8">
+              <div className="flex justify-between  mx-1 lg:mx-6 p-4">
+                <p className="text-gray-400 font-normal  text-[9px] md:text-[14px]  lg:text-[14px]  ">
                   {" "}
                   &#xA9;Copyright fatan
                 </p>
-                <p className="text-gray-400   font-normal pt-2 text-[9px]  md:text-[14px]   md:px-4 md:pt-5  lg:text-[14px] lg:pr-8">
-                  Developed by vividia software
+                <p className="text-gray-400   font-normal text-[9px]  md:text-[14px]   md:px-4   lg:text-[14px] ">
+                  Developed by Vividia Infosys
                 </p>
               </div>
             </div>
