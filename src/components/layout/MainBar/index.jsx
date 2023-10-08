@@ -102,25 +102,29 @@ h- [2.38594rem]"
                 placeholder="What's on your mind, Isha?"
               />
               {image.length > 0 && (
-                <div className="flex flex-wrap mt-2 ">
+                <div className="flex flex-wrap ml-8 w-full ">
                   {image.map((imageUrl, index) => (
                     <div
                       key={index}
-                      className="relative p-2 mr-2 "
-                      style={{ flexBasis: "30%", boxSizing: "border-box" }}
+                      className="relative  p-[6px] "
+                      style={{
+                        flex: "0 0 30%",
+                        boxSizing: "border-box",
+                        margin: "0",
+                      }}
                     >
                       <Image
-                        className="h-40 w-full object-contain items-center"
+                        className="h-40  w-full object-cover items-center"
                         src={imageUrl}
                         width={700}
-                        height={30}
+                        height={300}
                         alt=""
                       />
                       <div
-                        className="absolute top-0 right-0 w-[35px] h-[35px] rounded-[25px] bg-[#39434d] flex items-center justify-center ml-auto"
+                        className="absolute top-0 right-0  w-[35px] h-[35px] rounded-[25px] bg-[#39434d] flex items-center justify-center ml-auto hover:opacity-90"
                         onClick={() => handleRemoveImage(index)}
                       >
-                        <button className="text-[28px] p-[8px] flex">X</button>
+                        <button className="text-[20px]  flex text-white p-3">X</button>
                       </div>
                     </div>
                   ))}
