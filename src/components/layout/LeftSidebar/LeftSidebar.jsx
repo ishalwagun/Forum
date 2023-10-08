@@ -9,8 +9,8 @@ import Link from "next/link";
 const LeftSidebar = () => {
   return (
     <>
-      <div className="   hidden lg:block lg:flex-col md:px-[25px] lg:gap-[1.25rem]  w-[100%] ">
-        <div className="sticky top-[100px] lg:flex-col lg:flex lg:gap-[1.25rem]  ">
+      <div className="hidden lg:block md:px-[25px] lg:gap-[1.25rem]  w-[100%] ">
+        <div className="sticky top-[100px] lg:flex-col lg:flex lg:gap-[1.25rem] ">
           <div className="  flex-col p-[0.62rem] bg-[#262D34] rounded-2xl flex-shrink-0 flex gap-[7px] ">
             <Top
               image="/icon/new.png"
@@ -87,7 +87,7 @@ const LeftSidebar = () => {
             </div>
           </div>
           <div className="flex-col bg-[#262D34] rounded-2xl flex-shrink-0 py-[1.25rem] pl-[1.25rem] pr-[1.56rem]">
-            <Link href={"/dashboard/group"}>
+            <Link href="/group">
               <div className="mb-[1.25rem] cursor-pointer">
                 <p className="text-[1rem] leading-[1.5rem] font-semibold text-white">
                   Pinned Group &rarr;

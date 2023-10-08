@@ -7,10 +7,7 @@ import Image from "next/image";
 const Contents = (props) => {
   return (
     <>
-      <div
-        className="  bg-[#262d34] rounded-[16px] flex  flex-row p-[20px] items-start justify-between mb-[1.25rem] ml-[25px]  mr-[25px] lg:mr-0  basis-3/4
-       "
-      >
+      <div className="bg-[#262d34] rounded-[16px] flex  flex-row p-[20px] items-start justify-between mb-[1.25rem] ml-[25px] mr-[25px] lg:mr-0  basis-3/4">
         <div className="basis-2/12 mr-[20px]">
           <Image
             className=" rounded-[0.25rem] md:rounded-[16px] h-[2.5rem] w-[3.5rem] lg:h-[9.75rem] lg:w-[9.75rem] md:h-[6rem] md:w-[9rem] max-w-[100%] "

@@ -10,7 +10,7 @@ export default function DashboardLayout({
 }) {
   return (
     <>
-      <div className="pt-[100px]   ">
+      <div className="pt-[100px]">
         <Header />
         {/* <div className=" flex mr-[30px] ml-[5px] lg:ml-0  ">
           {<LeftSidebar />}
@@ -26,12 +26,13 @@ export default function DashboardLayout({
           </div>
         </div> */}
 
-        <div className="flex container mx-auto">
-          <div className="">
+        <div className="container mx-auto flex">
+          <div className="basis-1/5">
             <LeftSidebar />
           </div>
-          <div className="flex-col lg:flex lg:flex-row">
-            <div className="">
+
+          <div className="flex-col lg:flex lg:flex-row  basis-4/5">
+            <div>
               <MainBar />
               {children}
             </div>

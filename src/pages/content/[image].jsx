@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 
 export default function ImagePage() {
   let router = useRouter();
-  console.log(router.query.image);
   return (
     <div className="relative w-screen h-screen bg-gray-800">
       <Link

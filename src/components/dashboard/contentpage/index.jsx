@@ -28,7 +28,7 @@ const ContentPage = ({ onClose }) => {
   return (
     <>
       <div className="w-[100%] p-[25px] pr-0  lg:pr-[25px] rounded-[16px] basis-3/4 ">
-        <h1 className="text-white text-[25px] mb-[7px]mr-[25px] md:mr-0">
+        <h1 className="text-white text-[25px] mb-[7px] mr-[25px] md:mr-0">
           Which movie have you watched most recently?
         </h1>
 

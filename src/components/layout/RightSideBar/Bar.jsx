@@ -4,7 +4,7 @@ import Bottom from "./sections/Bottom";
 
 const Bar = () => {
   return (
-    <div className=" flex-col  items-start gap-[10px] ml-[25px] mr-[25px] md:mr-0 ">
+    <div className=" flex-col items-start gap-[10px] ml-[25px] mr-[25px] md:mr-0 ">
       <div className="sticky top-[100px]">
         <div className=" w-[100%] bg-[#262d34] p-[1.25rem] rounded-2xl mb-[20px]">
           <h1 className=" text-white text-[16px] font-normal leading-6">
