@@ -39,7 +39,7 @@ const Header = () => {
             </button>
           </div>
 
-          <div className="hidden lg:flex lg:gap-[20px] lg:ml-[84px] lg:flex-shrink-0">
+          <div className="hidden lg:gap-[20px] lg:ml-[84px] lg:flex-shrink-0">
             <button className="icons  ">
               <Image src="/icon/home.png" alt="" width={20} height={20} />
             </button>
@@ -59,9 +59,9 @@ const Header = () => {
             </button>
           </div>
 
-          <div className=" hidden md:flex md:flex-1 md:bg-[#2c353d] md:px-[20px] md:py-[9px] md:rounded-lg md:ml-[17px]">
+          <div className=" hidden md:flex  md:bg-[#2c353d] md:px-[20px] md:py-[9px] md:rounded-lg md:ml-[17px]">
             <input
-              className="flex flex-1 bg-[#2c353d] border-none outline-none text-[14px] text-[#858ead]
+              className="flex lg:w-[400px] bg-[#2c353d] border-none outline-none text-[14px] text-[#858ead]
               "
               type="text"
               placeholder="Type here to search..."

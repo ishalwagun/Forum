@@ -7,6 +7,7 @@ import Image from "next/image";
 import photo from "/public/icon/photoupload.png";
 import ModalPost from "@/components/modalpost";
 import ImageWithCaption from "@/components/EditImage/EditImage";
+import PostTag from "@/components/tag/Tag";
 
 const MainBar = ({ onClose }) => {
   const [showModal, setShowModal] = useState(false);
@@ -16,6 +17,27 @@ const MainBar = ({ onClose }) => {
   const [showEditButton, setShowEditButton] = useState(false);
   const [showEditComponent, setShowEditComponent] = useState(false);
 
+  const [showPostTag, setShowPostTag] = useState(false);
+  const [textareaValue, setTextareaValue] = useState("");
+  const handlePostTagClose = () => {
+    // Logic to close the post tag component
+    setShowPostTag(false);
+  };
+  const handleTextareaChange = (event) => {
+    const text = event.target.value;
+    setTextareaValue(text);
+    const lastWord = text.trim().split(" ").pop();
+
+    setShowPostTag(lastWord.startsWith("#") && lastWord.length > 1);
+  };
+
+  const handleTagClick = (tag) => {
+    const textArray = textareaValue.trim().split(" ");
+    const lastWord = textArray.pop();
+    const newText = [...textArray, tag].join(" ");
+    setTextareaValue(`${newText} `);
+    setShowPostTag(false); // Hide the PostTag component after clicking a tag
+  };
   const inputRef = useRef(null);
 
   const MAX_IMAGES = 6;
@@ -81,8 +103,8 @@ const MainBar = ({ onClose }) => {
 
   return (
     <>
-      <div className=" w-[100%]  ">
-        <div className="lg:hidden flex  bg-[#262d34] items-center   rounded-[0.625rem] p-[0.62rem] justify-between mb-[1.25rem] mx-[25px] lg:mx-0">
+      <div className=" w-[100%] px-[30px] md:px-0 ">
+        <div className="lg:hidden flex  bg-[#262d34] items-center   rounded-[0.625rem] p-[0.62rem] justify-between mb-[1.25rem] ">
           <div className="flex gap-[0.38rem] items-center p-[0.38rem] py-[0.31rem]  hover:bg-[#2C353D] hover:rounded-[0.375rem]">
             <div className="bg-[#2C353D] p-[0.25rem] rounded-[0.375rem] ">
               <Image src={icon} alt="" />
@@ -110,7 +132,7 @@ const MainBar = ({ onClose }) => {
             </div>
           </div>
         </div>
-        <div className=" bg-[#262d34] items-center  flex gap-[20px] rounded-[16px] justify-between  mb-[20px] p-[1.25rem] mx-[25px] md:mx-0lg:mx-[20px]">
+        <div className=" bg-[#262d34] items-center  flex gap-[20px] rounded-[16px] justify-between  mb-[20px] p-[1.25rem]  md:mx-0lg:mx-[20px]">
           <div className="contentImg">
             <Image
               className=" w-[2.45194rem]
@@ -130,6 +152,7 @@ h- [2.38594rem]"
               placeholder="Let's share what going on your mind..."
             />
           </button>
+
           <ModalPost
             show={showModal}
             onClose={() => setShowModal(false)}
@@ -140,79 +163,91 @@ h- [2.38594rem]"
             }
           >
             <>
-              <div
-                className={`w-[100%] pb-8 pt-2 my-2  ${
-                  showEditComponent && image.length > 0
-                    ? "h-[53vh]"
-                    : "h-[29vh]"
-                } overflow-y-auto overflow-x-hidden`}
-              >
-                <textarea
-                  className="w-[100%] ml-5 p-2 mt-[16px] text-white bg-[#2d3238] pr-[16px] outline-none text-2xl placeholder:text-3xl flex flex-1 max-w-[550px]:break-words"
-                  placeholder="What's on your mind, Isha?"
-                />
+              <div className="relative">
+                <div
+                  className={`w-[100%] pb-8 my-2   ${
+                    showEditComponent && image.length > 0
+                      ? "h-[53vh]"
+                      : "h-[29vh]"
+                  } overflow-y-auto overflow-x-hidden`}
+                >
+                  <textarea
+                    className="w-[100%] ml-5 pl-2 pr-10 mt-[16px] text-white bg-[#2d3238]  outline-none text-2xl placeholder:text-3xl flex flex-1 max-w-[30%]:break-words"
+                    placeholder="What's on your mind, Isha?"
+                    onChange={handleTextareaChange}
+                    value={textareaValue}
+                  />
 
-                <div className="relative ">
-                  {!showEditComponent && image.length > 0 && (
-                    <div className="flex flex-wrap ml-8 w-full">
-                      {image.map((imageUrl, index) => (
-                        <div
-                          key={index}
-                          className="relative"
-                          style={{
-                            flex: "0 0 30%",
-                            boxSizing: "border-box",
-                            margin: "0",
-                          }}
-                        >
-                          <Image
-                            className="h-40 w-full object-cover items-center"
-                            src={imageUrl}
-                            width={700}
-                            height={300}
-                            alt=""
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                  <div className="relative ">
+                    {!showEditComponent && image.length > 0 && (
+                      <div className="flex flex-wrap ml-8 w-full">
+                        {image.map((imageUrl, index) => (
+                          <div
+                            key={index}
+                            className="relative"
+                            style={{
+                              flex: "0 0 30%",
+                              boxSizing: "border-box",
+                              margin: "0",
+                            }}
+                          >
+                            <Image
+                              className="h-40 w-full object-cover items-center"
+                              src={imageUrl}
+                              width={700}
+                              height={300}
+                              alt=""
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    )}
 
-                  {/* Cross button to close all images */}
-                  {!showEditComponent && image.length > 0 && (
-                    <div
-                      className="absolute top-0 mt-2 right-10 w-[35px] h-[35px] rounded-[25px] bg-[#53595e] flex items-center justify-center hover:opacity-90"
-                      onClick={() => handleCloseImages()}
-                    >
-                      <button className="text-[35px] flex text-white p-3">
-                        ×
-                      </button>
-                    </div>
-                  )}
-                  {/* Edit button */}
-                  {!showEditComponent && showEditButton && (
-                    <div
-                      className="absolute top-0 left-0 mt-4 ml-9 px-3  h-[35px] rounded-md bg-[#9a9c9e] flex items-center justify-center hover:opacity-90"
-                      onClick={handleEditAll}
-                    >
-                      <Image
-                        src={"/icon/editpen.png"}
-                        alt=""
-                        width={20}
-                        height={20}
-                        className="mr-1"
+                    {/* Cross button to close all images */}
+                    {!showEditComponent && image.length > 0 && (
+                      <div
+                        className="absolute top-0 mt-2 right-10 w-[35px] h-[35px] rounded-[25px] bg-[#53595e] flex items-center justify-center hover:opacity-90"
+                        onClick={() => handleCloseImages()}
+                      >
+                        <button className="text-[35px] flex text-white p-3">
+                          ×
+                        </button>
+                      </div>
+                    )}
+                    {/* Edit button */}
+                    {!showEditComponent && showEditButton && (
+                      <div
+                        className="absolute top-0 left-0 mt-4 ml-9 px-3  h-[35px] rounded-md bg-[#9a9c9e] flex items-center justify-center hover:opacity-90"
+                        onClick={handleEditAll}
+                      >
+                        <Image
+                          src={"/icon/editpen.png"}
+                          alt=""
+                          width={20}
+                          height={20}
+                          className="mr-1"
+                        />
+                        <button className="text-[18px] flex text-white p-1">
+                          Edit All
+                        </button>
+                      </div>
+                    )}
+                    {showEditComponent && (
+                      <ImageWithCaption
+                        images={image}
+                        onImageRemove={handleImageRemove}
                       />
-                      <button className="text-[18px] flex text-white p-1">
-                        Edit All
-                      </button>
-                    </div>
-                  )}
-                  {showEditComponent && (
-                    <ImageWithCaption
-                      images={image}
-                      onImageRemove={handleImageRemove}
-                    />
-                  )}
+                    )}
+                  </div>
                 </div>
+
+                {showPostTag && (
+                  <PostTag
+                    typedText={textareaValue}
+                    onTagClick={handleTagClick}
+                    onClose={handlePostTagClose}
+                  />
+                )}
               </div>
             </>
 
@@ -233,6 +268,7 @@ h- [2.38594rem]"
                 </div>
               )}
             </div>
+            {/* <PostTag/> */}
           </ModalPost>
         </div>
       </div>

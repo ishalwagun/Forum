@@ -26,12 +26,12 @@ export default function DashboardLayout({
           </div>
         </div> */}
 
-        <div className="container lg:mx-auto flex">
-          <div className="basis-1/5">
+        <div className="container mx-auto flex md:px-[30px] ">
+          <div className="lg:basis-1/5">
             <LeftSidebar />
           </div>
 
-          <div className="flex-col lg:flex lg:flex-row  basis-4/5">
+          <div className="flex-col lg:flex lg:flex-row  lg:basis-4/5">
             <div>
               <MainBar />
               {children}
