@@ -87,13 +87,11 @@ const LeftSidebar = () => {
             </div>
           </div>
           <div className="flex-col bg-[#262D34] rounded-2xl flex-shrink-0 py-[1.25rem] pl-[1.25rem] pr-[1.56rem]">
-            <Link href="/group">
-              <div className="mb-[1.25rem] cursor-pointer">
-                <p className="text-[1rem] leading-[1.5rem] font-semibold text-white">
-                  Pinned Group &rarr;
-                </p>
-              </div>
-            </Link>
+            <div className="mb-[1.25rem] cursor-pointer">
+              <p className="text-[1rem] leading-[1.5rem] font-semibold text-white">
+                Pinned Group &rarr;
+              </p>
+            </div>
 
             <div className="flex-col flex gap-[0.62rem] ">
               {

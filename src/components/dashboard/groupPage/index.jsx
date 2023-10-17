@@ -1,7 +1,7 @@
 import React from "react";
 import Contents from "./contents/Contents";
 
-function Content() {
+function GroupPage() {
   return (
     <>
       {
@@ -72,4 +72,4 @@ function Content() {
   );
 }
 
-export default Content;
+export default GroupPage;

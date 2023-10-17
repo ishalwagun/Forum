@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import profile from "public/icon/profile.png";
 import settings from "public/icon/settings.png";
 import logout from "public/icon/logout.png";
@@ -12,6 +12,22 @@ import { useRouter } from "next/router";
 function DropDown() {
   const { logOut } = useFirebase();
   const router = useRouter();
+  const dropdownRef = useRef(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(true);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   const handleSignOut = async () => {
     try {
       await logOut();
@@ -21,7 +37,12 @@ function DropDown() {
     }
   };
   return (
-    <div className="absolute w-[90%] max-w-[350px]  bg-[#2d333b]  shadow-lg rounded overflow-hidden top-[100%] right-[3%] lg:right-[1%] text-white  transition-[max-h]:0.3s">
+    <div
+      className={`absolute w-[90%] max-w-[350px] bg-[#2d333b] shadow-lg rounded overflow-hidden top-[100%] right-[3%] lg:right-[1%] text-white transition-[max-h]:0.3s ${
+        isDropdownOpen ? "" : "hidden"
+      }`}
+      ref={dropdownRef}
+    >
       <div className="p-5">
         <div className="bg-[#2d333b] shadow-[0_2px_12px_rgba(0,0,0,0.2)] rounded-lg p-2 ">
           <div className="flex gap-3 items-center hover:bg-[#384046]  hover:cursor-pointer py-3 px-1 rounded-lg ">

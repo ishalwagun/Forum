@@ -4,7 +4,7 @@ import styles from "../styles/Modal.module.css";
 import Image from "next/image";
 import profile from "/public/icon/profile.png";
 import Categories from "./modalCategories/Categories";
-import PostTag from "./tag/Tag";
+import PostTag from "./layout/tag/Tag";
 
 export default function Modal({ show, onClose, children, modalWidth }) {
   const [isBrowser, setIsBrowser] = useState(false);

@@ -1,12 +1,11 @@
-import GroupPage from "@/components/dashboard/groupPage";
-
+import ContentSingle from "@/components/dashboard/content-single";
 import DashboardLayout from "@/components/layout/layout";
 import React from "react";
 
-export default function Group() {
+export default function Dashboard() {
   return (
     <DashboardLayout>
-      <GroupPage />
+      <ContentSingle />
     </DashboardLayout>
   );
 }

@@ -1,7 +1,7 @@
 import Login from "./login";
 import Register from "./Register";
 import DashboardLayout from "@/components/layout/layout";
-import Content from "@/components/dashboard/content";
+
 import ContentPage from "./dashboard";
 import { useFirebase } from "../context/firebase";
 import Link from "next/link";

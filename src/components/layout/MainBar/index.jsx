@@ -7,7 +7,7 @@ import Image from "next/image";
 import photo from "/public/icon/photoupload.png";
 import ModalPost from "@/components/modalpost";
 import ImageWithCaption from "@/components/EditImage/EditImage";
-import PostTag from "@/components/tag/Tag";
+import PostTag from "@/components/layout/tag/Tag";
 
 const MainBar = ({ onClose }) => {
   const [showModal, setShowModal] = useState(false);
@@ -19,8 +19,8 @@ const MainBar = ({ onClose }) => {
 
   const [showPostTag, setShowPostTag] = useState(false);
   const [textareaValue, setTextareaValue] = useState("");
+
   const handlePostTagClose = () => {
-    // Logic to close the post tag component
     setShowPostTag(false);
   };
   const handleTextareaChange = (event) => {

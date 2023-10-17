@@ -21,7 +21,7 @@ export default function PostTag({ typedText, onTagClick, onClose }) {
     const handleClickOutside = (event) => {
       const tagComponent = document.getElementById("postTagComponent");
       if (tagComponent && !tagComponent.contains(event.target)) {
-        onClose(); // Call the onClose function when clicking outside
+        onClose(); // Calls the onClose function when clicking outside
       }
     };
 
