@@ -1,4 +1,4 @@
-import ContentSingle from "@/components/dashboard/content-single";
+import ContentSingle from "@/components/dashboard/content-single";git
 import DashboardLayout from "@/components/layout/layout";
 import React from "react";
 

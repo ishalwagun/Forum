@@ -26,7 +26,7 @@ export default function DashboardLayout({
           </div>
         </div> */}
 
-        <div className="container mx-auto flex md:px-[30px] ">
+        <div className="container mx-auto flex md:px-[30px] pb-[70px] lg:pb-0">
           <div className="lg:basis-1/5">
             <LeftSidebar />
           </div>
