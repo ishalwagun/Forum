@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,12 +8,14 @@ import { CountryDropdown } from "react-country-region-selector";
 import { useRouter } from "next/router";
 import { useFirebase } from "@/context/firebase";
 import Button from "../loadingButton/button";
+import { toast } from "react-toastify";
 
 const RegisterForm = () => {
   const { user, googleSignIn, facebookSignIn } = useFirebase();
   const router = useRouter();
   const firebase = useFirebase();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (firebase.isLoggedIn) {
@@ -47,8 +50,29 @@ const RegisterForm = () => {
     control,
   } = useForm();
 
-  const onSubmit = async (data) => {
-    console.log(data);
+  // async function registerUser(data) {
+  //   try {
+  //     const response = await axios.post(
+  //       "https://api.vividiainfosys.com/api/app-user/register",
+  //       data
+  //     );
+  //     return response.data;
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // }
+
+  const onSubmit = (data) => {
+    //console.log(regobj);
+    axios
+      .post("https://api.vividiainfosys.com/api/app-user/register", data)
+      .then((res) => {
+        toast.success("Registered successfully.");
+        navigate("/login");
+      })
+      .catch((err) => {
+        toast.error("Failed :" + err.message);
+      });
   };
 
   //check password event
@@ -234,7 +258,7 @@ const RegisterForm = () => {
             className="pl-2 text-[14px] text-white font-[500]"
             onClick={googleHandleSignIn}
           >
-            Sign in with Google
+            Sign up with Google
           </button>
         </div>
         <div className="loginBtns">
@@ -249,7 +273,7 @@ const RegisterForm = () => {
             className="pl-2 text-[14px] text-white font-[500]"
             onClick={facebookHandleSignIn}
           >
-            Sign in with Facebook
+            Sign up with Facebook
           </button>
         </div>
       </div>
@@ -275,17 +299,15 @@ const RegisterForm = () => {
         </div>
       </div>
 
-      <Button
+      {/* <Button
         title={"Create account"}
+        type="submit"
         loading={loading}
         onClick={() => {
           setLoading(true);
-
-          setTimeout(() => {
-            setLoading(false);
-          }, 2000);
         }}
-      />
+      /> */}
+      <button className="text-white">create</button>
     </form>
   );
 };

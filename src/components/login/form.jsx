@@ -138,7 +138,7 @@ const LoginForm = () => {
             className="pl-2 text-[14px] text-white font-[500]"
             onClick={googleHandleSignIn}
           >
-            Sign up with Google
+            Sign in with Google
           </button>
         </div>
         <div className="loginBtns">
@@ -153,7 +153,7 @@ const LoginForm = () => {
             className="pl-2 text-[14px] text-white font-[500]"
             onClick={facebookHandleSignIn}
           >
-            Sign up with Facebook
+            Sign in with Facebook
           </button>
         </div>
       </div>
