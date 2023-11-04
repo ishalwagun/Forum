@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { useFirebase } from "@/context/firebase";
 import { useRouter } from "next/router";
 import Button from "../loadingButton/button";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
   const { user, googleSignIn, facebookSignIn } = useFirebase();
@@ -48,7 +50,20 @@ const LoginForm = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    const requestData = {
+      ...data,
+      workspaceId: process.env.WORKSPACE_ID,
+    };
+    axios
+      .post("https://api.vividiainfosys.com/api/app-user/auth", requestData)
+      .then((res) => {
+        console.log("Response data:", res.data);
+        console.log("succesfull");
+        toast.success("Login successfully.");
+      })
+      .catch((err) => {
+        toast.error("Failed :" + err.message);
+      });
   };
 
   return (
@@ -138,7 +153,7 @@ const LoginForm = () => {
             className="pl-2 text-[14px] text-white font-[500]"
             onClick={googleHandleSignIn}
           >
-            Sign up with Google
+            Sign in with Google
           </button>
         </div>
         <div className="loginBtns">
@@ -153,7 +168,7 @@ const LoginForm = () => {
             className="pl-2 text-[14px] text-white font-[500]"
             onClick={facebookHandleSignIn}
           >
-            Sign up with Facebook
+            Sign in with Facebook
           </button>
         </div>
       </div>
@@ -171,7 +186,9 @@ const LoginForm = () => {
         </a>
       </div>
 
-      <Button
+      <button>login</button>
+
+      {/* <Button
         title={"Sign in"}
         loading={loading}
         onClick={() => {
@@ -181,7 +198,7 @@ const LoginForm = () => {
             setLoading(false);
           }, 2000);
         }}
-      />
+      /> */}
     </form>
   );
 };

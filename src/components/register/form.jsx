@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,12 +8,15 @@ import { CountryDropdown } from "react-country-region-selector";
 import { useRouter } from "next/router";
 import { useFirebase } from "@/context/firebase";
 import Button from "../loadingButton/button";
+import { toast } from "react-toastify";
+import { workspaceId } from "@/config/constants";
 
 const RegisterForm = () => {
   const { user, googleSignIn, facebookSignIn } = useFirebase();
   const router = useRouter();
   const firebase = useFirebase();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (firebase.isLoggedIn) {
@@ -47,8 +51,22 @@ const RegisterForm = () => {
     control,
   } = useForm();
 
-  const onSubmit = async (data) => {
-    console.log(data);
+  const onSubmit = (data) => {
+    const requestData = {
+      ...data,
+      workspaceId: workspaceId,
+    };
+    console.log(requestData);
+
+    axios
+      .post("https://api.vividiainfosys.com/api/app-user/register", requestData)
+      .then((res) => {
+        console.log("succesfull");
+        toast.success("Registered successfully.");
+      })
+      .catch((err) => {
+        toast.error("Failed :" + err.message);
+      });
   };
 
   //check password event
@@ -68,22 +86,55 @@ const RegisterForm = () => {
           </Link>
         </p>
       </div>
+      <div className="mb-6 lg:flex lg:gap-6">
+        <div className="lg:w-full ">
+          <label className="label">First Name</label>
+          <input
+            className="input"
+            type="text"
+            {...register("firstName", {
+              required: "This is a required field",
+              maxLenght: 8,
+            })}
+          />
+
+          {errors?.fullName && (
+            <p className="text-red-500 text-[12px]">Full Name is required.</p>
+          )}
+        </div>
+        <div className="lg:w-full ">
+          <label className="label">Middle Name</label>
+          <input
+            className="input"
+            type="text"
+            {...register("middleName", {
+              required: "This is a required field",
+              maxLenght: 8,
+            })}
+          />
+          {errors?.fullName && (
+            <p className="text-red-500 text-[12px]">Full Name is required.</p>
+          )}
+        </div>
+        <div className="lg:w-full ">
+          <label className="label">Last Name</label>
+          <input
+            className="input"
+            type="text"
+            {...register("lastName", {
+              required: "This is a required field",
+              maxLenght: 8,
+            })}
+          />
+
+          {errors?.fullName && (
+            <p className="text-red-500 text-[12px]">Full Name is required.</p>
+          )}
+        </div>
+      </div>
       <div className="lg:flex">
         <div className="lg:mr-5 lg:w-full mb-6">
           <label className="label">Email</label>
-
-          {/* <Controller
-            name="email"
-            control={control}
-            rules={{
-              required: "Email is Required",
-              pattern:
-                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-            }}
-            render={({ field }) => {
-              return <input {...field} className="input" />;
-            }}
-          /> */}
 
           <input
             className=" input"
@@ -97,21 +148,6 @@ const RegisterForm = () => {
           />
           {errors.email && (
             <p className=" text-[12px] text-red-500">Email is required.</p>
-          )}
-        </div>
-        <div className="lg:w-full mb-6">
-          <label className="label">Full Name</label>
-          <input
-            className="input"
-            type="text"
-            {...register("fullName", {
-              required: "This is a required field",
-              maxLenght: 8,
-            })}
-          />
-
-          {errors?.fullName && (
-            <p className="text-red-500 text-[12px]">Full Name is required.</p>
           )}
         </div>
       </div>
@@ -234,7 +270,7 @@ const RegisterForm = () => {
             className="pl-2 text-[14px] text-white font-[500]"
             onClick={googleHandleSignIn}
           >
-            Sign in with Google
+            Sign up with Google
           </button>
         </div>
         <div className="loginBtns">
@@ -249,7 +285,7 @@ const RegisterForm = () => {
             className="pl-2 text-[14px] text-white font-[500]"
             onClick={facebookHandleSignIn}
           >
-            Sign in with Facebook
+            Sign up with Facebook
           </button>
         </div>
       </div>
@@ -275,17 +311,15 @@ const RegisterForm = () => {
         </div>
       </div>
 
-      <Button
+      {/* <Button
         title={"Create account"}
+        type="submit"
         loading={loading}
         onClick={() => {
           setLoading(true);
-
-          setTimeout(() => {
-            setLoading(false);
-          }, 2000);
         }}
-      />
+      /> */}
+      <button className="text-white">create</button>
     </form>
   );
 };
