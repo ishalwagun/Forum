@@ -50,25 +50,18 @@ const RegisterForm = () => {
     control,
   } = useForm();
 
-  // async function registerUser(data) {
-  //   try {
-  //     const response = await axios.post(
-  //       "https://api.vividiainfosys.com/api/app-user/register",
-  //       data
-  //     );
-  //     return response.data;
-  //   } catch (error) {
-  //     throw error;
-  //   }
-  // }
-
   const onSubmit = (data) => {
-    //console.log(regobj);
+    const requestData = {
+      ...data,
+      workspaceId: process.env.WORKSPACE_ID,
+    };
+    console.log(requestData);
+
     axios
-      .post("https://api.vividiainfosys.com/api/app-user/register", data)
+      .post("https://api.vividiainfosys.com/api/app-user/register", requestData)
       .then((res) => {
+        console.log("succesfull");
         toast.success("Registered successfully.");
-        navigate("/login");
       })
       .catch((err) => {
         toast.error("Failed :" + err.message);
@@ -92,22 +85,55 @@ const RegisterForm = () => {
           </Link>
         </p>
       </div>
+      <div className="mb-6 lg:flex lg:gap-6">
+        <div className="lg:w-full ">
+          <label className="label">First Name</label>
+          <input
+            className="input"
+            type="text"
+            {...register("firstName", {
+              required: "This is a required field",
+              maxLenght: 8,
+            })}
+          />
+
+          {errors?.fullName && (
+            <p className="text-red-500 text-[12px]">Full Name is required.</p>
+          )}
+        </div>
+        <div className="lg:w-full ">
+          <label className="label">Middle Name</label>
+          <input
+            className="input"
+            type="text"
+            {...register("middleName", {
+              required: "This is a required field",
+              maxLenght: 8,
+            })}
+          />
+          {errors?.fullName && (
+            <p className="text-red-500 text-[12px]">Full Name is required.</p>
+          )}
+        </div>
+        <div className="lg:w-full ">
+          <label className="label">Last Name</label>
+          <input
+            className="input"
+            type="text"
+            {...register("lastName", {
+              required: "This is a required field",
+              maxLenght: 8,
+            })}
+          />
+
+          {errors?.fullName && (
+            <p className="text-red-500 text-[12px]">Full Name is required.</p>
+          )}
+        </div>
+      </div>
       <div className="lg:flex">
         <div className="lg:mr-5 lg:w-full mb-6">
           <label className="label">Email</label>
-
-          {/* <Controller
-            name="email"
-            control={control}
-            rules={{
-              required: "Email is Required",
-              pattern:
-                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-            }}
-            render={({ field }) => {
-              return <input {...field} className="input" />;
-            }}
-          /> */}
 
           <input
             className=" input"
@@ -121,21 +147,6 @@ const RegisterForm = () => {
           />
           {errors.email && (
             <p className=" text-[12px] text-red-500">Email is required.</p>
-          )}
-        </div>
-        <div className="lg:w-full mb-6">
-          <label className="label">Full Name</label>
-          <input
-            className="input"
-            type="text"
-            {...register("fullName", {
-              required: "This is a required field",
-              maxLenght: 8,
-            })}
-          />
-
-          {errors?.fullName && (
-            <p className="text-red-500 text-[12px]">Full Name is required.</p>
           )}
         </div>
       </div>
