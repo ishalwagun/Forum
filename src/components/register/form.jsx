@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { useFirebase } from "@/context/firebase";
 import Button from "../loadingButton/button";
 import { toast } from "react-toastify";
+import { workspaceId } from "@/config/constants";
 
 const RegisterForm = () => {
   const { user, googleSignIn, facebookSignIn } = useFirebase();
@@ -53,7 +54,7 @@ const RegisterForm = () => {
   const onSubmit = (data) => {
     const requestData = {
       ...data,
-      workspaceId: process.env.WORKSPACE_ID,
+      workspaceId: workspaceId,
     };
     console.log(requestData);
 
