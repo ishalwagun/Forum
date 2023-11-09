@@ -7,25 +7,35 @@ import { useFirebase } from "@/context/firebase";
 import { useRouter } from "next/router";
 import Button from "../loadingButton/button";
 import axios from "axios";
-import { toast } from "react-toastify";
-
+import Toaster from "../../../toaster";
+import { workspaceId } from "@/config/constants";
 const LoginForm = () => {
-  const { user, googleSignIn, facebookSignIn } = useFirebase();
+  const {
+    user,
+    googleSignIn,
+    facebookSignIn,
+    googleAccessToken,
+    facebookAccessToken,
+  } = useFirebase();
   const router = useRouter();
-  const firebase = useFirebase();
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (firebase.isLoggedIn) {
-      router.push("/dashboard");
+  const handleLoginSuccess = (firstLoginValue) => {
+    if (firstLoginValue) {
+      router.push("/settings"); // Redirect to profile setup for first login
+    } else {
+      router.push("/dashboard"); // Redirect to the dashboard for subsequent logins
     }
-  }, [firebase, router]);
+  };
+
+  const handleLoginFailure = () => {
+    // Handle the case when the user is not registered
+    toast.error("User is not registered. Please sign up.");
+  };
 
   const googleHandleSignIn = async () => {
     try {
       await googleSignIn();
-
-      router.push(!user ? "/Register" : "/dashboard");
     } catch (error) {
       console.log(error);
     }
@@ -34,36 +44,64 @@ const LoginForm = () => {
   const facebookHandleSignIn = async () => {
     try {
       await facebookSignIn();
-
-      router.push(!user ? "/Register" : "/");
     } catch (error) {
       console.log(error);
     }
   };
 
-  console.log(user);
   const {
     handleSubmit,
     register,
-    watch,
+
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    const requestData = {
-      ...data,
-      workspaceId: process.env.WORKSPACE_ID,
-    };
-    axios
-      .post("https://api.vividiainfosys.com/api/app-user/auth", requestData)
-      .then((res) => {
-        console.log("Response data:", res.data);
-        console.log("succesfull");
-        toast.success("Login successfully.");
-      })
-      .catch((err) => {
-        toast.error("Failed :" + err.message);
-      });
+  const onSubmit = async (data) => {
+    setLoading(true);
+
+    try {
+      let requestData;
+
+      if (googleAccessToken) {
+        // Signing in with Google, use access_token
+        requestData = {
+          access_token: googleAccessToken,
+          workspaceId: workspaceId,
+        };
+      } else if (facebookAccessToken) {
+        requestData = {
+          access_token: facebookAccessToken,
+          workspaceId: workspaceId,
+        };
+      } else {
+        // Signing in with create button, use ...data
+        requestData = {
+          ...data,
+          workspaceId: workspaceId,
+        };
+      }
+      setLoading(true);
+      axios
+        .post("https://api.vividiainfosys.com/api/app-user/auth", requestData)
+        .then((res) => {
+          const firstLoginValue = res.data.data.first_login;
+
+          Toaster({ message: "Login Successfull", type: "success" });
+          handleLoginSuccess(firstLoginValue);
+        })
+        .catch((err) => {
+          if (err.response && err.response.status === 40) {
+            Toaster({ message: "User not registered", type: "error" });
+          } else {
+            Toaster({
+              message: "Login failed. Please try again.",
+              type: "error",
+            });
+          }
+        });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -74,9 +112,9 @@ const LoginForm = () => {
       <div className="mb-5">
         <p className="text-3xl text-white font-semibold  mb-3">Welcome back</p>
         <p className="text-gray-400 text-[15px] ">
-          Start your website in seconds. Don't have an account?{" "}
+          Start your website in seconds. Don't have an account?
           <Link href="/Register">
-            <span className="text-blue-500 font-medium">Sign up</span>
+            <span className="text-blue-500 font-medium ml-1">Sign up</span>
           </Link>
         </p>
       </div>
@@ -109,7 +147,7 @@ const LoginForm = () => {
               required: "Password is required",
               pattern: {
                 value:
-                  /^(\S)(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹])[a-zA-Z0-9~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]{10,16}$/,
+                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/,
                 message:
                   "Password should include at least one uppercase, one numeric value and one special character",
               },
@@ -145,7 +183,7 @@ const LoginForm = () => {
           <Image
             className="w-5 h-5  mt-[4px]"
             src="/Assests/logos/google.png"
-            alt=""
+            alt="google"
             width={20}
             height={20}
           />
@@ -160,7 +198,7 @@ const LoginForm = () => {
           <Image
             className="w-6  h-6  mb-[1px]  "
             src="/Assests/logos/facebook.png"
-            alt=""
+            alt="facebook"
             width={24}
             height={24}
           />
@@ -185,20 +223,7 @@ const LoginForm = () => {
           </p>
         </a>
       </div>
-
-      <button>login</button>
-
-      {/* <Button
-        title={"Sign in"}
-        loading={loading}
-        onClick={() => {
-          setLoading(true);
-          // fake api call
-          setTimeout(() => {
-            setLoading(false);
-          }, 2000);
-        }}
-      /> */}
+      <Button title={"Sign in"} loading={loading} />
     </form>
   );
 };

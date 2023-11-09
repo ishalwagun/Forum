@@ -1,8 +1,9 @@
 import Head from "next/head";
 import "@/styles/globals.css";
 import "@/styles/index.css";
-import { FirebaseProvider } from "../context/firebase";
+
 import { CommentProvider } from "@/context/context";
+import  Toaster  from "../../toaster";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -13,6 +14,7 @@ export default function App({ Component, pageProps }) {
       </Head>
       <CommentProvider>
         <Component {...pageProps} />
+        <Toaster />
       </CommentProvider>
     </>
   );
