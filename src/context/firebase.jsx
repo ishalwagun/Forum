@@ -28,6 +28,8 @@ const facebookProvider = new FacebookAuthProvider();
 
 export const FirebaseProvider = (props) => {
   const [user, setUser] = useState(null);
+  const [googleAccessToken, setgoogleAccessToken] = useState(null);
+  const [facebookAccessToken, setFacebookAccessToken] = useState(null);
 
   // useEffect(() => {
   //   const unsuscribe = onAuthStateChanged(firebaseAuth, (user) => {
@@ -46,8 +48,12 @@ export const FirebaseProvider = (props) => {
     onAuthStateChanged(firebaseAuth, (user) => {
       if (user) {
         setUser(user);
+        setgoogleAccessToken(user.googleToken);
+        setFacebookAccessToken(user.facebookToken);
       } else {
         setUser(null);
+        setgoogleAccessToken(null);
+        setFacebookAccessToken(null);
       }
     });
   }, []);
@@ -61,7 +67,8 @@ export const FirebaseProvider = (props) => {
 
         // This gives you a Facebook Access Token. You can use it to access the Facebook API.
         const credential = FacebookAuthProvider.credentialFromResult(result);
-        const accessToken = credential.accessToken;
+        const facebookToken = credential.accessToken;
+        setFacebookAccessToken(facebookToken);
 
         // IdP data available using getAdditionalUserInfo(result)
       })
@@ -84,11 +91,10 @@ export const FirebaseProvider = (props) => {
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
+        const googleToken = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
+        setgoogleAccessToken(googleToken);
       })
       .catch((error) => {
         // Handle Errors here.
@@ -111,7 +117,14 @@ export const FirebaseProvider = (props) => {
 
   return (
     <FirebaseContext.Provider
-      value={{ googleSignIn, facebookSignIn, isLoggedIn, logOut }}
+      value={{
+        googleSignIn,
+        facebookSignIn,
+        isLoggedIn,
+        logOut,
+        googleAccessToken,
+        facebookAccessToken,
+      }}
     >
       {props.children}
     </FirebaseContext.Provider>

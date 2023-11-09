@@ -8,27 +8,33 @@ import { CountryDropdown } from "react-country-region-selector";
 import { useRouter } from "next/router";
 import { useFirebase } from "@/context/firebase";
 import Button from "../loadingButton/button";
-import { toast } from "react-toastify";
+import Toaster from "../../../toaster";
 import { workspaceId } from "@/config/constants";
 
 const RegisterForm = () => {
-  const { user, googleSignIn, facebookSignIn } = useFirebase();
+  const {
+    user,
+    googleSignIn,
+    facebookSignIn,
+    googleAccessToken,
+    facebookAccessToken,
+  } = useFirebase();
   const router = useRouter();
   const firebase = useFirebase();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    if (firebase.isLoggedIn) {
-      router.push("/login");
-    }
-  }, [firebase, router]);
+  // useEffect(() => {
+  //   if (firebase.isLoggedIn) {
+  //     router.push("/login");
+  //   }
+  // }, [firebase, router]);
 
   const googleHandleSignIn = async () => {
     try {
       await googleSignIn();
 
-      router.push(user ? "/login" : "/Register");
+      // router.push(user ? "/login" : "/Register");
     } catch (error) {
       console.log(error);
     }
@@ -37,8 +43,6 @@ const RegisterForm = () => {
   const facebookHandleSignIn = async () => {
     try {
       await facebookSignIn();
-
-      router.push(user ? "/login" : "/Register");
     } catch (error) {
       console.log(error);
     }
@@ -52,20 +56,45 @@ const RegisterForm = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    const requestData = {
-      ...data,
-      workspaceId: workspaceId,
-    };
-    console.log(requestData);
+    let requestData;
+    if (googleAccessToken) {
+      // Signing in with Google, use access_token
+      requestData = {
+        access_token: googleAccessToken,
+        workspaceId: workspaceId,
+      };
+    } else if (facebookAccessToken) {
+      requestData = {
+        access_token: facebookAccessToken,
+        workspaceId: workspaceId,
+      };
+    } else {
+      // Signing in with create button, use ...data
+      requestData = {
+        ...data,
+        workspaceId: workspaceId,
+      };
+    }
 
+    setLoading(true);
     axios
       .post("https://api.vividiainfosys.com/api/app-user/register", requestData)
       .then((res) => {
-        console.log("succesfull");
-        toast.success("Registered successfully.");
+        Toaster({ message: "Registered Successfully", type: "success" });
+        router.push("/login");
       })
       .catch((err) => {
-        toast.error("Failed :" + err.message);
+        if (err.response && err.response.status === 409) {
+          Toaster({ message: "User already registered", type: "error" });
+        } else {
+          Toaster({
+            message: "Registration failed. Please try again.",
+            type: "error",
+          });
+        }
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -89,14 +118,7 @@ const RegisterForm = () => {
       <div className="mb-6 lg:flex lg:gap-6">
         <div className="lg:w-full ">
           <label className="label">First Name</label>
-          <input
-            className="input"
-            type="text"
-            {...register("firstName", {
-              required: "This is a required field",
-              maxLenght: 8,
-            })}
-          />
+          <input className="input" type="text" {...register("firstName")} />
 
           {errors?.fullName && (
             <p className="text-red-500 text-[12px]">Full Name is required.</p>
@@ -104,28 +126,14 @@ const RegisterForm = () => {
         </div>
         <div className="lg:w-full ">
           <label className="label">Middle Name</label>
-          <input
-            className="input"
-            type="text"
-            {...register("middleName", {
-              required: "This is a required field",
-              maxLenght: 8,
-            })}
-          />
+          <input className="input" type="text" {...register("middleName")} />
           {errors?.fullName && (
             <p className="text-red-500 text-[12px]">Full Name is required.</p>
           )}
         </div>
         <div className="lg:w-full ">
           <label className="label">Last Name</label>
-          <input
-            className="input"
-            type="text"
-            {...register("lastName", {
-              required: "This is a required field",
-              maxLenght: 8,
-            })}
-          />
+          <input className="input" type="text" {...register("lastName")} />
 
           {errors?.fullName && (
             <p className="text-red-500 text-[12px]">Full Name is required.</p>
@@ -180,14 +188,14 @@ const RegisterForm = () => {
           <input
             className="input"
             type="number"
-            {...register("number", {
+            {...register("phone", {
               required: "Number is Required",
               pattern: /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
             })}
           />
 
-          {errors?.number && (
-            <p className="text-red-500 text-[12px]">Number is Invalid</p>
+          {errors?.phone && (
+            <p className="text-red-500 text-[12px]">Phone Number is Invalid</p>
           )}
         </div>
       </div>
@@ -202,7 +210,8 @@ const RegisterForm = () => {
               required: "Password is required",
               pattern: {
                 value:
-                  /^(\S)(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹])[a-zA-Z0-9~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]{10,16}$/,
+                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/,
+
                 message:
                   "Password should include at least one uppercase, one numeric value and one special character",
               },
@@ -235,13 +244,12 @@ const RegisterForm = () => {
             }}
             {...register("confirmPassword", {
               required: "confirm password is required",
-              pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/,
               validate: (value) =>
                 value === password || "The passwords do not match",
             })}
           />
 
-          {errors.confirmPassword && (
+          {errors?.confirmPassword && (
             <span className="text-sm text-red-500">
               {errors.confirmPassword.message}
             </span>
@@ -311,15 +319,7 @@ const RegisterForm = () => {
         </div>
       </div>
 
-      {/* <Button
-        title={"Create account"}
-        type="submit"
-        loading={loading}
-        onClick={() => {
-          setLoading(true);
-        }}
-      /> */}
-      <button className="text-white">create</button>
+      <Button title={"Create account"} loading={loading} />
     </form>
   );
 };

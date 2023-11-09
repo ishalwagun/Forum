@@ -4,7 +4,7 @@ export default function Button({ title, loading, onClick, type }) {
   return (
     <button
       disabled=""
-      type="button"
+      type="submit"
       className=" w-full justify-center text-white mt-8 px-5 py-3.5  bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[14px]  text-center dark:bg-blue-600 dark:hover:bg-blue-500 font-500 dark:focus:ring-blue-600 inline-flex items-center"
       onClick={onClick}
     >

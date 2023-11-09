@@ -1,4 +1,3 @@
-
 import Header from "./Header/Header";
 import LeftSidebar from "./LeftSidebar/LeftSidebar";
 import MainBar from "./MainBar";
@@ -26,7 +25,7 @@ export default function DashboardLayout({
           </div>
         </div> */}
 
-        <div className="container mx-auto flex md:px-[30px] pb-[70px] lg:pb-0">
+        <div className="container mx-auto flex md:px-[30px] pb-[75px] lg:pb-0">
           <div className="lg:basis-1/5">
             <LeftSidebar />
           </div>
