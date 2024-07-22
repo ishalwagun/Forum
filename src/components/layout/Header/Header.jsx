@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <>
       <FirebaseProvider>
-        <div className="bg-[#262d34] flex justify-between px-[22px] items-center fixed top-0 w-full z-50">
+        <div className="bg-[#262d34] flex justify-between py-[10px] px-[22px] items-center fixed top-0 w-full z-50">
           <div className="flex items-center ml-[14px] gap-[10px]">
             <div className="bg-white p-[4px] rounded-md flex-shrink-0">
               <Image
