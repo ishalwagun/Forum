@@ -81,7 +81,7 @@ export default function Modal({ show, onClose, children, modalWidth }) {
                   >
                     <p>{showCategories ? "Back to Content" : "Categories"}</p>
                     <Image
-                      src="/icon/drop-down.png"
+                      src="./icon/drop-down.png"
                       width={20}
                       height={20}
                       alt=""

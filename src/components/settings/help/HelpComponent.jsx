@@ -9,7 +9,7 @@ export default function HelpComponent(props) {
         <div className="w-full mb-6 ">
           <div className="bg-[#323941] p-4 rounded-md">
             <div className="bg-[#424f58] rounded-full w-[40px] h-[38px] flex items-center justify-center border border-gray-500 mb-3">
-              <Image src="/icon/user.png" width={24} height={24} alt=""></Image>
+              <Image src="./icon/user.png" width={24} height={24} alt=""></Image>
             </div>
             <div className="flex-col ">
               <p className="font-semibold">{props.title}</p>

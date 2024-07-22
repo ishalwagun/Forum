@@ -13,7 +13,7 @@ const Register = () => {
           <div className="  flex  justify-center items-center ">
             <Image
               className="  w-[120px]  py-8 mb-6 md:w-[150px] md:mb-10 md:mt-4"
-              src="/Assests/logos/fatan.png"
+              src="./Assests/logos/fatan.png"
               alt=""
               width={120}
               height={120}
@@ -28,7 +28,7 @@ const Register = () => {
             <div>
               <Image
                 className=" object-contain hidden lg:flex lg:items-center lg:justify-center lg:ml-4 lg:mb-10"
-                src="/Assests/image/wallpaper.png"
+                src="./Assests/image/wallpaper.png"
                 alt=""
                 width={621}
                 height={208}

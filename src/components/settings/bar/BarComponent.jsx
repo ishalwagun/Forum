@@ -12,7 +12,7 @@ function BarComponent() {
           <div className="relative">
             <Image
               className=" rounded-[50%] w-[100px] h-[100px]  object-cover "
-              src="/1.jpg"
+              src="./1.jpg"
               width={100}
               height={100}
               alt="profile"
@@ -39,7 +39,7 @@ function BarComponent() {
          "
         >
           <Image
-            src="/icon/settings.png"
+            src="./icon/settings.png"
             alt="settings"
             width={16}
             height={16}
@@ -53,7 +53,7 @@ function BarComponent() {
          "
         >
           <Image
-            src="/icon/settings.png"
+            src="./icon/settings.png"
             alt="settings"
             width={16}
             height={16}
@@ -67,7 +67,7 @@ function BarComponent() {
          "
         >
           <Image
-            src="/icon/settings.png"
+            src="./icon/settings.png"
             alt="settings"
             width={16}
             height={16}
@@ -84,7 +84,7 @@ function BarComponent() {
          "
         >
           <Image
-            src="/icon/settings.png"
+            src="./icon/settings.png"
             alt="settings"
             width={16}
             height={16}
@@ -98,7 +98,7 @@ function BarComponent() {
          "
         >
           <Image
-            src="/icon/settings.png"
+            src="./icon/settings.png"
             alt="settings"
             width={16}
             height={16}

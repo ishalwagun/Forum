@@ -79,7 +79,7 @@ function ModalComment({ onClose, props }) {
             <div>
               <Image
                 className="  rounded-[50%] w-[45px] h-[45px] object-cover "
-                src="/1.jpg"
+                src="./1.jpg"
                 alt=""
                 width={40}
                 height={40}

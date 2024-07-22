@@ -15,7 +15,7 @@ export default function Help() {
             <div>
               <Image
                 className="lg:hidden"
-                src="/Assests/svg/menu.svg"
+                src="./Assests/svg/menu.svg"
                 width={30}
                 height={30}
                 alt=""

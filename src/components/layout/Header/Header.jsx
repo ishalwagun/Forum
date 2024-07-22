@@ -41,21 +41,21 @@ const Header = () => {
 
           <div className="hidden lg:gap-[20px] lg:ml-[84px] lg:flex-shrink-0">
             <button className="icons  ">
-              <Image src="/icon/home.png" alt="" width={20} height={20} />
+              <Image src="./icon/home.png" alt="" width={20} height={20} />
             </button>
             <button className="icons ">
-              <Image src="/icon/calendar.png" alt="" width={20} height={20} />
+              <Image src="./icon/calendar.png" alt="" width={20} height={20} />
             </button>
 
             <button className="icons">
-              <Image src="/icon/groups.png" alt="" width={20} height={20} />
+              <Image src="./icon/groups.png" alt="" width={20} height={20} />
             </button>
 
             <button className="icons">
-              <Image src="/icon/audio.png" alt="" width={20} height={20} />
+              <Image src="./icon/audio.png" alt="" width={20} height={20} />
             </button>
             <button className="icons">
-              <Image src="/icon/mic.png" alt="" width={20} height={20} />
+              <Image src="./icon/mic.png" alt="" width={20} height={20} />
             </button>
           </div>
 

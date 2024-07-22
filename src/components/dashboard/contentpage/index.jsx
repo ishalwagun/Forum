@@ -104,7 +104,7 @@ const ContentPage = ({ onClose }) => {
                   <div className="flex items-center pt-[30px] gap-4">
                     <button className="flex gap-2">
                       <Image
-                        src="/icon/upaarow.png"
+                        src="./icon/upaarow.png"
                         width={17}
                         height={20}
                         alt=""
@@ -114,7 +114,7 @@ const ContentPage = ({ onClose }) => {
                     <button className="flex gap-2">
                       <Image
                         className="mt-[2px]"
-                        src="/icon/downarrow.png"
+                        src="./icon/downarrow.png"
                         width={17}
                         height={20}
                         alt=""
@@ -123,7 +123,7 @@ const ContentPage = ({ onClose }) => {
                     </button>
                     <button className="flex gap-2">
                       <Image
-                        src="/icon/btnheart.png"
+                        src="./icon/btnheart.png"
                         width={22}
                         height={20}
                         alt=""
@@ -144,24 +144,24 @@ const ContentPage = ({ onClose }) => {
                   <div className="flex items-center pt-[30px] gap-5">
                     <div className=" hidden md:flex gap-5 ">
                       <button>
-                        <Image src="/icon/link.png" width={17} height={17} />
+                        <Image src="./icon/link.png" width={17} height={17} />
                       </button>
                       <button>
-                        <Image src="/icon/flag.png" width={17} height={17} />
+                        <Image src="./icon/flag.png" width={17} height={17} />
                       </button>
                       <button>
                         <Image
-                          src="/icon/bookmark.png"
+                          src="./icon/bookmark.png"
                           width={12}
                           height={10}
                         />
                       </button>
                     </div>
                     <button className=" lg:hidden">
-                      <Image src="/icon/menu.png" width={23} height={23} />
+                      <Image src="./icon/menu.png" width={23} height={23} />
                     </button>
                     <button>
-                      <Image src="/icon/share.png" width={22} height={22} />
+                      <Image src="./icon/share.png" width={22} height={22} />
                     </button>
                   </div>
                 </div>

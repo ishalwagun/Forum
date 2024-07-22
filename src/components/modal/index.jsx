@@ -31,7 +31,7 @@ const Modal = () => {
         >
           <div className="w-[100%] h-40 overflow-hidden flex justify-center items-center image-container">
             <Image
-              src="/1.jpg"
+              src="./1.jpg"
               alt="image"
               layout="fill"
               className=" w-[100%]  object-cover carousel-image"
@@ -45,7 +45,7 @@ const Modal = () => {
         >
           <div className="w-[100%] h-40 overflow-hidden flex justify-center items-center image-container">
             <Image
-              src="/1.jpg"
+              src="./1.jpg"
               alt="image"
               layout="fill"
               className=" w-[100%]  object-cover carousel-image"

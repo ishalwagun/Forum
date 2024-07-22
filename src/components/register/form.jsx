@@ -269,7 +269,7 @@ const RegisterForm = () => {
         <div className="loginBtns">
           <Image
             className="w-5 h-5  mt-[4px]"
-            src="/Assests/logos/google.png"
+            src="./Assests/logos/google.png"
             alt=""
             width={20}
             height={20}
@@ -284,7 +284,7 @@ const RegisterForm = () => {
         <div className="loginBtns">
           <Image
             className="w-6 h-6  "
-            src="/Assests/logos/facebook.png"
+            src="./Assests/logos/facebook.png"
             alt=""
             width={24}
             height={24}

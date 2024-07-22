@@ -28,7 +28,7 @@ function Footer() {
           <button className="icons p-[0.62rem]  hover:bg-[#ff571a] rounded-[0.4375rem] ">
             <Image
               className="w-[20px] h-[20px]"
-              src="/icon/home.png"
+              src="./icon/home.png"
               alt=""
               width={1.3}
               height={1.3}
@@ -44,7 +44,7 @@ function Footer() {
       >
         <Image
           className="w-[20px] h-[20px]"
-          src="/icon/calendar.png"
+          src="./icon/calendar.png"
           alt=""
           width={1.3}
           height={1.3}
@@ -54,7 +54,7 @@ function Footer() {
       <button className="icons  p-[0.62rem]  hover:bg-[#ff571a] rounded-[0.4375rem] ">
         <Image
           className="w-[20px] h-[20px]"
-          src="/icon/groups.png"
+          src="./icon/groups.png"
           alt=""
           width={1.3}
           height={1.3}
@@ -64,7 +64,7 @@ function Footer() {
       <button className="icons  p-[0.62rem]  hover:bg-[#ff571a] rounded-[0.4375rem] ">
         <Image
           className="w-[20px] h-[20px]"
-          src="/icon/audio.png"
+          src="./icon/audio.png"
           alt=""
           width={1.3}
           height={1.3}
@@ -76,7 +76,7 @@ function Footer() {
       >
         <Image
           className="w-[20px] h-[20px]"
-          src="/icon/mic.png"
+          src="./icon/mic.png"
           alt=""
           width={1.3}
           height={1.3}

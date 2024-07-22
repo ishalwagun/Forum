@@ -12,7 +12,7 @@ export default function SidebarToggle() {
   return (
     <div className="lg:hidden" onClick={toggleBarVisibility}>
       <Image
-        src="/icon/settings-menu.png"
+        src="./icon/settings-menu.png"
         alt="menu"
         width={20}
         height={20}
